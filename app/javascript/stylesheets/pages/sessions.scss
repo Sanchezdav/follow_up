@@ -1,0 +1,17 @@
+.sessions {
+  box-sizing: border-box;
+
+  &__introduction {
+    background-image: linear-gradient(to right bottom, #81c784, $green);
+    color: white;
+    text-align: center;
+  }
+
+  &__content {
+    background-color: white;
+  }
+
+  form {
+    width: 400px;
+  }
+}
