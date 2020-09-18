@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  default_form_builder BootstrapFormBuilder
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

@@ -12,15 +12,18 @@
 
   <body>
     <div class="sessions row m-0 min-vh-100">
+      <div class="col-md-7">
+        <%= render 'shared/alerts' %>
+        <div class="sessions__content min-vh-100 p-3 d-flex flex-column justify-content-center align-items-center">
+          <%= yield(:content) %>
+        </div>
+      </div>
       <div class="sessions__introduction col-md-5 min-vh-100 p-3 d-flex flex-column justify-content-center align-items-center">
         <a href="/" class="logo display-4 mb-5 text-decoration-none">
           <span class="logo__primary-text text-white">Follow</span>
           <span class="logo__secondary-text">Up</span>
         </a>
         <%= yield(:introduction) %>
-      </div>
-      <div class="sessions__content col-md-6 min-vh-100 p-3 d-flex flex-column justify-content-center align-items-center">
-        <%= yield(:content) %>
       </div>
     </div>
   </body>
