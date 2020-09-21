@@ -1,7 +1,10 @@
+@import './vendor/bootstrap';
+@import './vendor/fontawesome';
+
 @import './abstracts/variables';
+
+@import './components/sidebar';
 
 @import './base/base';
 
 @import './pages/sessions';
-
-@import './vendor/bootstrap';

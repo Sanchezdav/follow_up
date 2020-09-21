@@ -1,0 +1,41 @@
+#sidebar-wrapper {
+  min-height: 100vh;
+
+  .list-group {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 4rem;
+
+    a {
+      align-items: center;
+      color: $gray;
+      font-size: 1.3rem;
+      display: flex;
+      height: 45px;
+      justify-content: center;
+      transition: all .25s ease;
+      width: 45px;
+
+      &:hover, &.active {
+        background-color: $blue;
+        border-radius: 50%;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  #sidebar-wrapper {
+  .list-group {
+    width: 2rem;
+
+    a {
+      font-size: .9rem;
+      height: 35px;
+      width: 35px;
+    }
+  }
+}
+}

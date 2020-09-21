@@ -7,4 +7,10 @@ module ApplicationHelper
       notice: "alert-info"
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
+
+  def current_path?(current_path)
+    return 'active' if request.path == current_path
+
+    ''
+  end
 end

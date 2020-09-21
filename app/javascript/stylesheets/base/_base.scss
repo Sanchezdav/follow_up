@@ -8,6 +8,18 @@ body {
   min-height: 100vh;
 }
 
+#main-layout {
+  background-color: #F8F9FA;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#content-wrapper {
+  width: 100%;
+}
+
 .logo {
   &__primary-text {
     font-family: 'Pacifico', cursive;
