@@ -1,13 +1,13 @@
-#sidebar-wrapper {
+#sidebar__wrapper {
   min-height: 100vh;
 
-  .list-group {
+  .sidebar__content {
     align-items: center;
     display: flex;
     justify-content: center;
     width: 4rem;
 
-    a {
+    a.sidebar__item {
       align-items: center;
       color: $gray;
       font-size: 1.3rem;
@@ -27,15 +27,15 @@
 }
 
 @media (max-width: 576px) {
-  #sidebar-wrapper {
-  .list-group {
-    width: 2rem;
+  #sidebar__wrapper {
+    .sidebar__content {
+      width: 2rem;
 
-    a {
-      font-size: .9rem;
-      height: 35px;
-      width: 35px;
+      a.sidebar__item {
+        font-size: .9rem;
+        height: 35px;
+        width: 35px;
+      }
     }
   }
-}
 }
