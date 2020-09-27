@@ -17,7 +17,8 @@ body {
 }
 
 #content-wrapper {
-  width: 100%;
+  margin: 0 auto;
+  width: 85%;
 }
 
 .logo {
@@ -28,11 +29,5 @@ body {
   &__secondary-text {
     color: $blue;
     font-weight: bold;
-  }
-}
-
-@media (max-width: 768px) {
-  #content-wrapper {
-    width: 85%;
   }
 }
