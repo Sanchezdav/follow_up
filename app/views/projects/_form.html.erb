@@ -1,0 +1,13 @@
+<%= form_with(model: project, local: true, class: 'col-md-8 offset-md-2') do |form| %>
+  <div class="mb-3">
+    <%= form.text_field_with_label :name, autofocus: true %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description %>
+    <%= form.rich_text_area :description %>
+  </div>
+  <%= form.submit class: 'btn btn-primary btn-block' %>
+  <div class="text-center mt-4">
+    <%= link_to 'Back', projects_path %>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<% if @projects.any? %>
+  <section>
+    <div class="d-flex align-items-center justify-content-between">
+      <h2>Projects</h2>
+      <%= link_to 'New Project', new_project_path, class: 'btn btn-secondary' %>
+    </div>
+
+    <ul>
+      <% @projects.each do |project| %>
+        <li><%= project.name %></li>
+      <% end %>
+    </ul>
+  </section>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="display-4 d-flex flex-column align-items-center">
+          <i class="fas fa-tasks"></i>
+          Create your first project
+        </h1>
+        <div class="mt-3">
+          <%= link_to 'Click here', new_project_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
