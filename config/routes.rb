@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   unauthenticated :user do
     devise_scope :user do
       root 'landing#index', as: :unauthenticated_root
+      post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
     end
   end
   

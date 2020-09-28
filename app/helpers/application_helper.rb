@@ -13,4 +13,8 @@ module ApplicationHelper
 
     ''
   end
+
+  def user_nickname(user)
+    user.username || user.name.mentionable || user.email.split('@')[0]
+  end
 end

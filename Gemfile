@@ -18,6 +18,7 @@ gem 'image_processing'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'friendly_id', '~> 5.4.0'
+gem 'activerecord-session_store'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

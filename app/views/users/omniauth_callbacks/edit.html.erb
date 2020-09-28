@@ -1,0 +1,28 @@
+<% content_for :introduction do %>
+  <h1 class="mb-3">Hi! 👋🏼</h1>
+  <h5 class="mb-3">Please update your personal info before start.</h5>
+<% end %>
+
+<% content_for :content do %>
+  <h1 class="text-center mb-3">Update your profile</h1>
+
+  <%= form_tag '/sign_up_validation', method: :post, multipart: true do %>
+    <div class="mb-3">
+      <label for="user_email" class="form-label">Email</label>
+      <%= email_field_tag "user[email]", @user.email, required: true, class: "form-control" %>
+      <div class="form-text"><%= @user.errors.full_messages_for(:email).join(', ') %></div>
+    </div>
+
+    <div class="mb-3">
+      <label for="user_username" class="form-label">Username</label>
+      <%= text_field_tag "user[username]", @user.username, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <label for="user_name" class="form-label">Full Name</label>
+      <%= text_field_tag "user[name]", @user.name, class: "form-control" %>
+    </div>
+
+    <%= submit_tag "Update", class: "btn btn-primary btn-block" %>
+  <% end %>
+<% end %>

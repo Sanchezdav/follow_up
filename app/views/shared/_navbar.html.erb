@@ -15,9 +15,10 @@
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       </ul>
 
-      <ul class="navbar-nav">
+      <ul class="navbar-nav d-flex align-items-center">
         <% if user_signed_in? %>
 
+          <li class="nav-item"><%= user_nickname(current_user) %></li>
           <li class="nav-item dropdown">
             <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
               <% if current_user.avatar.attached? %>
