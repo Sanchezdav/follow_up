@@ -1,9 +1,10 @@
 @import './vendor/bootstrap';
 @import './vendor/fontawesome';
-
-@import './abstracts/helpers';
 @import './abstracts/variables';
 
+@import './abstracts/helpers';
+
+@import './components/project-card';
 @import './components/sidebar';
 
 @import './base/base';

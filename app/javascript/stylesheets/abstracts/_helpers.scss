@@ -1,3 +1,19 @@
+.btn-twitter {
+  background-color: $twitter-blue;
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .2s ease;
+  width: 400px;
+
+  &:hover {
+    background-color: $dark-twitter-blue;
+    color: white;
+  }
+}
+
 .rounded-xl {
   border-radius: 30px;
 }
