@@ -1,14 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @project.user_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<section class="project-page">
+  <header class="project-page__header mb-5">
+    <div class="d-flex align-items-center justify-content-between mb-2">
+      <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
+      <p class="d-flex flex-column align-items-end">
+        <span class="text-muted">Created on</span>
+        <span><%= @project.created_at.strftime("%B %d, %Y") %></span>
+      </p>
+    </div>
+    <ul class="project-page__avatars">
+      <li class="project-page__avatars__item">
+        <a href="#">
+          <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+        </a>
+      </li>
+      <li class="project-page__avatars__item">
+        <a href="#">
+          <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+        </a>
+      </li>
+      <li class="project-page__avatars__item">
+        <a href="#">
+          <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+        </a>
+      </li>
+      <li class="project-page__avatars__item">
+        <a href="#">
+          <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+        </a>
+      </li>
+      <li class="project-page__avatars__item">
+        <a href="#">
+          <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+        </a>
+      </li>
+      <li class="project-page__avatars__item">
+        <a href="#">
+          13+
+        </a>
+      </li>
+    </ul>
+  </header>
+  <div class="project-page__content px-3 py-4">
+    <div class="row">
+      <% @project.labels.each do |label| %>
+        <div class="col-md-3">
+          <h3 class="mb-3">
+            <span class="badge rounded-pill <%= label.color %>"><%= label.name %></span>
+          </h3>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p>Hola como estas</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p>Hola como estas</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <p>Hola como estas</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

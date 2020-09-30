@@ -1,26 +1,27 @@
 # == Schema Information
 #
-# Table name: projects
+# Table name: labels
 #
 #  id         :bigint           not null, primary key
-#  name       :string           default(""), not null
+#  name       :string
+#  position   :integer
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  project_id :bigint           not null
 #
 # Indexes
 #
-#  index_projects_on_slug     (slug) UNIQUE
-#  index_projects_on_user_id  (user_id)
+#  index_labels_on_project_id  (project_id)
+#  index_labels_on_slug        (slug)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (project_id => projects.id)
 #
 require 'test_helper'
 
-class ProjectTest < ActiveSupport::TestCase
+class LabelTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

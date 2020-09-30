@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_28_024502) do
+ActiveRecord::Schema.define(version: 2020_09_30_034559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2020_09_28_024502) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.string "name"
+    t.integer "position"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_labels_on_project_id"
+    t.index ["slug"], name: "index_labels_on_slug"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", default: "", null: false
@@ -95,5 +106,6 @@ ActiveRecord::Schema.define(version: 2020_09_28_024502) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "labels", "projects"
   add_foreign_key "projects", "users"
 end

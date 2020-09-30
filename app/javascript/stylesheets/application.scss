@@ -1,12 +1,12 @@
 @import './vendor/bootstrap';
 @import './vendor/fontawesome';
 @import './abstracts/variables';
+@import './base/base';
 
 @import './abstracts/helpers';
 
 @import './components/project-card';
 @import './components/sidebar';
 
-@import './base/base';
-
+@import './pages/project';
 @import './pages/sessions';
