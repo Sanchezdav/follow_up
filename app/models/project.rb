@@ -20,6 +20,8 @@
 #
 class Project < ApplicationRecord
   extend FriendlyId
+  include Labelable
+
   friendly_id :name, use: :slugged
 
   MAIN_LABELS = ['Backlog', 'In Progress', 'QA', 'Done']
@@ -28,7 +30,6 @@ class Project < ApplicationRecord
 
   belongs_to :user
   has_rich_text :description
-  has_many :labels, -> { order(position: :asc) }, dependent: :destroy, inverse_of: :project
 
   validates :name, presence: true, length: {minimum: 2, maximum: 50}
 
@@ -36,7 +37,7 @@ class Project < ApplicationRecord
 
   def set_main_labels
     MAIN_LABELS.each do |label|
-      self.labels.build(name: label)
+      self.labels.new(name: label)
     end
   end
 end

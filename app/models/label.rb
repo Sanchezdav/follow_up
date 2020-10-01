@@ -2,29 +2,26 @@
 #
 # Table name: labels
 #
-#  id         :bigint           not null, primary key
-#  name       :string
-#  position   :integer
-#  slug       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  project_id :bigint           not null
+#  id             :bigint           not null, primary key
+#  labelable_type :string
+#  name           :string
+#  position       :integer
+#  slug           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  labelable_id   :bigint
 #
 # Indexes
 #
-#  index_labels_on_project_id  (project_id)
-#  index_labels_on_slug        (slug)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (project_id => projects.id)
+#  index_labels_on_labelable_type_and_labelable_id  (labelable_type,labelable_id)
+#  index_labels_on_slug                             (slug)
 #
 class Label < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
-  acts_as_list scope: :project
+  acts_as_list scope: :labelable
 
-  belongs_to :project, inverse_of: :labels
+  belongs_to :labelable, polymorphic: true
 
   def color
     case slug

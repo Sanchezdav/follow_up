@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_034559) do
+ActiveRecord::Schema.define(version: 2020_10_01_015857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,13 +58,14 @@ ActiveRecord::Schema.define(version: 2020_09_30_034559) do
   end
 
   create_table "labels", force: :cascade do |t|
-    t.bigint "project_id", null: false
     t.string "name"
     t.integer "position"
     t.string "slug"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_labels_on_project_id"
+    t.string "labelable_type"
+    t.bigint "labelable_id"
+    t.index ["labelable_type", "labelable_id"], name: "index_labels_on_labelable_type_and_labelable_id"
     t.index ["slug"], name: "index_labels_on_slug"
   end
 
@@ -106,6 +107,5 @@ ActiveRecord::Schema.define(version: 2020_09_30_034559) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "labels", "projects"
   add_foreign_key "projects", "users"
 end
