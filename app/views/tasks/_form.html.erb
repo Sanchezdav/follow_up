@@ -1,0 +1,21 @@
+<%= form_with(
+      model: [project, task], class: 'col-md-10 offset-md-1',
+      html: { data: { 
+        type: "html",
+        action: "ajax:error->projects#onCreateTaskError" }}) do |form| %>
+  <div class="mb-3">
+    <div data-target="projects.taskErrors"></div>
+  </div>
+  <div class="mb-3">
+    <%= form.text_field_with_label :title, autofocus: true, data: { target: 'projects.taskTitle' } %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag 'Status', nil, { class: 'form-label' } %>
+    <%= select_tag "status", options_from_collection_for_select(project.labels, "slug", "name"),  { class: 'form-control' } %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: 'form-label' %>
+    <%= form.rich_text_area :description, data: { target: 'projects.taskDescription' } %>
+  </div>
+  <%= form.submit class: 'btn btn-primary btn-block', data: { target: 'projects.taskSubmit', disable_with: 'Creating...' } %>
+<% end %>

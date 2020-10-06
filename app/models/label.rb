@@ -22,6 +22,7 @@ class Label < ApplicationRecord
   acts_as_list scope: :labelable
 
   belongs_to :labelable, polymorphic: true
+  has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
 
   def color
     case slug

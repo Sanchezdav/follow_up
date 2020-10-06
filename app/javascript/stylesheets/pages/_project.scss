@@ -53,6 +53,12 @@
 
     .card {
       border-radius: 15px;
+
+      &.empty-card {
+        background-color: $light-gray;
+        border-style: dashed;
+        border-width: 3px;
+      }
     }
   }
 }
