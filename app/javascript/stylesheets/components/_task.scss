@@ -1,0 +1,20 @@
+.task {
+  transition: all .2s ease;
+
+  &:hover {
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    transform: translateX(2px) translateY(2px);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__comments {
+    color: $gray;
+  }
+
+  &__back {
+    font-size: 1.5rem;
+  }
+}

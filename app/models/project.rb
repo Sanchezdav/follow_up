@@ -29,6 +29,7 @@ class Project < ApplicationRecord
   before_create :set_main_labels
 
   belongs_to :user
+  has_many :tasks, through: :labels
   has_rich_text :description
 
   validates :name, presence: true, length: {minimum: 2, maximum: 50}

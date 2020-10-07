@@ -39,6 +39,8 @@ class Task < ApplicationRecord
   end
 
   def uuid
-    SecureRandom.uuid
+    return SecureRandom.uuid unless label.labelable.class.name == 'Project'
+
+    "#{label.labelable.name[0..2]}-#{SecureRandom.hex(4)}"
   end
 end

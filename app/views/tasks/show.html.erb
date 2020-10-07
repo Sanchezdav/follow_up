@@ -1,0 +1,35 @@
+<section class="task-page">
+  <div class="row">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <span class="text-muted">
+        <i class="fas fa-check-square mr-1"></i>
+        <%= @task.slug.upcase %>
+      </span>
+      <%= link_to 'Back to board', project_path(@task.label.labelable) %>
+    </div>
+    <div class="col-md-8">
+      <header class="task-page__header mb-4">
+        <h2 class="font-weight-bold"><%= @task.title %></h2>
+      </header>
+      <div class="pr-2">
+        <%= @task.description %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bg-light rounded-lg p-2 mb-3">
+        <%= label_tag 'Status', nil, { class: 'form-label font-weight-bold' } %>
+        <%= select_tag "status", options_from_collection_for_select(@task.label.labelable.labels, "slug", "name", @task.label.slug),  { class: 'form-select' } %>
+      </div>
+      <div class="task__assignee p-2 mb-2">
+        <h6 class="font-weight-bold">Assignee</h6>
+        <%= image_tag 'avatar.png', height: 30, width: 30, class: "rounded-circle" %>
+        <span>David Sanchez</span>
+      </div>
+      <div class="task__reporter p-2">
+        <h6 class="font-weight-bold">Reporter</h6>
+        <%= image_tag 'avatar.png', height: 30, width: 30, class: "rounded-circle" %>
+        <span>Peter Parker</span>
+      </div>
+    </div>
+  </div>
+</section>
