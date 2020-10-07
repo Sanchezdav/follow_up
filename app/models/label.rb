@@ -26,13 +26,13 @@ class Label < ApplicationRecord
 
   def color
     case slug
-    when 'backlog'
+    when /backlog/
       'bg-info'
-    when  'in-progress'
+    when  /in-progress/
       'bg-primary'
-    when 'qa'
+    when /qa/
       'bg-warning'
-    when 'done'
+    when /done/
       'bg-success'
     else
       'bg-info'
