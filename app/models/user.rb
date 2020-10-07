@@ -34,6 +34,8 @@ class User < ApplicationRecord
   has_person_name
   has_one_attached :avatar
   has_many :projects, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :project_members
+  has_many :collaborations, through: :project_members, source: :project, class_name: 'Project'
 
   validates :name, presence: true
 

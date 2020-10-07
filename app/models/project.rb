@@ -28,9 +28,11 @@ class Project < ApplicationRecord
 
   before_create :set_main_labels
 
+  has_rich_text :description
   belongs_to :user
   has_many :tasks, through: :labels
-  has_rich_text :description
+  has_many :project_members
+  has_many :members, through: :project_members, source: :user, class_name: 'User'
 
   validates :name, presence: true, length: {minimum: 2, maximum: 50}
 

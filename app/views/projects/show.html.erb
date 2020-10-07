@@ -10,36 +10,26 @@
     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
       <div class="d-flex align-items-center mb-2">
         <ul class="project-page__avatars">
-          <li class="project-page__avatars__item">
-            <a href="#">
-              <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-            </a>
-          </li>
-          <li class="project-page__avatars__item">
-            <a href="#">
-              <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-            </a>
-          </li>
-          <li class="project-page__avatars__item">
-            <a href="#">
-              <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-            </a>
-          </li>
-          <li class="project-page__avatars__item">
-            <a href="#">
-              <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-            </a>
-          </li>
-          <li class="project-page__avatars__item">
-            <a href="#">
-              <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-            </a>
-          </li>
-          <li class="project-page__avatars__item">
-            <a href="#">
-              13+
-            </a>
-          </li>
+          <% @project.members.limit(5).each do |member| %>
+            <li class="project-page__avatars__item">
+              <% if member.avatar.attached? %>
+                <a href="#">
+                  <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: "rounded-circle" %>
+                </a>
+              <% else %>
+                <a href="#">
+                  <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
+                </a>
+              <% end %>
+            </li>
+          <% end %>
+          <% if @project.members.count > 5 %>
+            <li class="project-page__avatars__item">
+              <a href="#">
+                <%= @project.members.count - 5 %>+
+              </a>
+            </li>
+          <% end %>
         </ul>
         <a href="#" class="btn btn-outline-secondary ml-4">
           Invite

@@ -9,13 +9,7 @@
 
   <section>
     <div class="row px-3">
-      <% @projects.each do |project| %>
-        <%= link_to project_path(project), class: 'col-md-3 project-card p-3 mx-4 mb-4' do %>
-          <span class="small text-muted"><%= project.created_at.strftime('%d/%m/%Y') %></span>
-          <h4 class="project-card__name"><%= project.name %></h4>
-          <p class="text-muted">24 tasks</p>
-        <% end %>
-      <% end %>
+      <%= render @projects %>
     </div>
   </section>
 <% else %>
