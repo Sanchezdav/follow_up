@@ -1,4 +1,4 @@
-<section class="project-page" data-controller="projects">
+<section class="project-page">
   <header class="project-page__header mb-5">
     <div class="d-flex align-items-center justify-content-between mb-2">
       <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
@@ -31,7 +31,7 @@
             </li>
           <% end %>
         </ul>
-        <a href="#" class="btn btn-outline-secondary ml-4">
+        <a href="#" class="btn btn-outline-secondary ml-4" data-toggle="modal" data-target="#invite-modal">
           Invite
           <i class="fas fa-plus ml-1"></i>
         </a>
@@ -41,7 +41,7 @@
       </a>
     </div>
   </header>
-  <div class="project-page__content px-3 py-4">
+  <div class="project-page__content px-3 py-4" data-controller="forms">
     <div class="row">
       <% @project.labels.each do |label| %>
         <div class="col-md-3">
@@ -62,21 +62,7 @@
         </div>
       <% end %>
     </div>
-    <div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="task-modal-label" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-fullscreen-lg-down modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Create a Task</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-action="click->projects#cleanForm">&times;</button>
-          </div>
-          <div class="modal-body">
-            <%= render 'tasks/form', project: @project, task: @task %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->projects#cleanForm">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render 'tasks/form_modal', project: @project, task: @task %>
+    <%= render 'invites/form_modal', project: @project, invite: @invite %>
   </div>
 </section>

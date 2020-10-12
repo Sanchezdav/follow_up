@@ -6,10 +6,11 @@
       New Project
     <% end %>
   </div>
-
   <section>
     <div class="row px-3">
-      <%= render @projects %>
+      <% @projects.each do |project| %>
+        <%= render(ProjectCardComponent.new(project: project)) %>
+      <% end %>
     </div>
   </section>
 <% else %>

@@ -1,0 +1,36 @@
+<div class="modal fade" id="task-modal" tabindex="-1" aria-labelledby="task-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-fullscreen-lg-down modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-action="click->forms#clean">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(
+              model: [project, task], class: 'col-md-10 offset-md-1',
+              html: { data: { 
+                type: "html",
+                action: "ajax:error->forms#onSubmitError" }}) do |form| %>
+          <div class="mb-3">
+            <div data-target="forms.errorsList"></div>
+          </div>
+          <div class="mb-3">
+            <%= form.text_field_with_label :title, autofocus: true, data: { target: 'forms.input' } %>
+          </div>
+          <div class="mb-3">
+            <%= label_tag 'Status', nil, { class: 'form-label' } %>
+            <%= select_tag "status", options_from_collection_for_select(project.labels, "slug", "name"),  { class: 'form-select' } %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :description, class: 'form-label' %>
+            <%= form.rich_text_area :description, data: { target: 'forms.input' } %>
+          </div>
+          <%= form.submit class: 'btn btn-primary btn-block', data: { target: 'forms.submitButton', disable_with: 'Creating...' } %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->forms#clean">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
