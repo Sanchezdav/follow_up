@@ -1,0 +1,12 @@
+<mjml>
+  <mj-body>
+    <mj-section background-color="#f0f0f0">
+      <mj-column>
+        <mj-text align="center" font-style="italic" font-size="30px" color="#2196F3">FollowUp</mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#fafafa">
+      <%= yield %>
+    </mj-section>
+  </mj-body>
+</mjml>

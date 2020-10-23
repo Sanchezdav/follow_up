@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  # Method called after Facebook registration
+  # Method called after Twitter registration
   def sign_up_validation
     @user = User.from_omniauth(session["devise.auth"])
 

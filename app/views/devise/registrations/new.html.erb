@@ -14,6 +14,10 @@
 
   <div class="mt-3">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% unless @token.nil? %>
+        <%= hidden_field_tag :invite_token, @token %>
+      <% end %>
+
       <div class="mb-3">
         <%= f.text_field_with_label :name, autofocus: true %>
       </div>

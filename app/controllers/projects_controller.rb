@@ -1,16 +1,19 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.projects
+    @projects = current_user.collaborations.includes(:tasks)
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
     @task = Task.new
+    @invite = @project.invites.new
+    @members = @project.members.limit(5).order(created_at: :asc)
   end
 
   # GET /projects/new

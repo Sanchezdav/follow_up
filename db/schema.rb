@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_07_033325) do
+ActiveRecord::Schema.define(version: 2020_10_08_021742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2020_10_07_033325) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.string "email"
+    t.bigint "project_id", null: false
+    t.integer "sender_id", null: false
+    t.integer "recipient_id"
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_invites_on_project_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -128,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_033325) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "invites", "projects"
   add_foreign_key "project_members", "projects"
   add_foreign_key "project_members", "users"
   add_foreign_key "projects", "users"

@@ -21,6 +21,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'activerecord-session_store'
 gem 'acts_as_list'
 gem 'view_component', require: 'view_component/engine'
+gem 'mjml-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -32,6 +33,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'letter_opener'
 end
 
 group :test do

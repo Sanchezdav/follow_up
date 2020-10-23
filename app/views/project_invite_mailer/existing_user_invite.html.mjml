@@ -1,0 +1,13 @@
+<mj-column width="400px">
+  <mj-text align="center" font-style="bold" font-size="25px" font-family="Helvetica Neue" color="#626262">Hey <%= @invite.email %>!</mj-text>
+  <mj-text align="center" color="#525252" font-family="Helvetica Neue" font-size="16px">
+    <%= @invite.sender.name %> has invited you to collaborate in <%= @invite.project.name %>
+  </mj-text>
+  <mj-text align="center" color="#525252" font-family="Helvetica Neue" font-size="16px">
+    Sign in to collaborate together
+  </mj-text>
+  <mj-button background-color="#2196F3" href="<%= @url %>">Sign In</mj-button>
+  <mj-text align="center" color="#525252" font-family="Helvetica Neue" font-size="14px">
+    Have a nice day!
+  </mj-text>
+</mj-column>

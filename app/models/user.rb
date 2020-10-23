@@ -36,6 +36,8 @@ class User < ApplicationRecord
   has_many :projects, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :project_members
   has_many :collaborations, through: :project_members, source: :project, class_name: 'Project'
+  has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id'
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
 
   validates :name, presence: true
 

@@ -10,11 +10,11 @@
     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
       <div class="d-flex align-items-center mb-2">
         <ul class="project-page__avatars">
-          <% @project.members.limit(5).each do |member| %>
+          <% @members.each do |member| %>
             <li class="project-page__avatars__item">
               <% if member.avatar.attached? %>
                 <a href="#">
-                  <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: "rounded-circle" %>
+                  <%= image_tag member.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: "rounded-circle" %>
                 </a>
               <% else %>
                 <a href="#">

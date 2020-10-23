@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
 
   unauthenticated :user do
     devise_scope :user do
@@ -14,5 +17,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :tasks
+    resources :invites
   end
 end
