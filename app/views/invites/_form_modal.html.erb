@@ -15,7 +15,7 @@
             <div data-target="forms.errorsList"></div>
           </div>
           <div class="mb-3">
-            <%= form.text_field_with_label :emails, placeholder: 'Eg. user1@email.com, user2@email.com...', autofocus: true, data: { target: 'forms.input' } %>
+            <%= form.text_field_with_label :emails, required: true, placeholder: 'Eg. user1@email.com, user2@email.com...', autofocus: true, data: { target: 'forms.input' } %>
           </div>
           <%= form.submit 'Send', class: 'btn btn-primary btn-block', data: { target: 'forms.submitButton', disable_with: 'Sending...' } %>
         <% end %>
