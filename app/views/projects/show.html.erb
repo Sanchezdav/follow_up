@@ -12,15 +12,7 @@
         <ul class="project-page__avatars">
           <% @members.each do |member| %>
             <li class="project-page__avatars__item">
-              <% if member.avatar.attached? %>
-                <a href="#">
-                  <%= image_tag member.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: "rounded-circle" %>
-                </a>
-              <% else %>
-                <a href="#">
-                  <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-                </a>
-              <% end %>
+              <a href="#"><%= user_avatar(user: member, size: 40) %></a>
             </li>
           <% end %>
           <% if @project.members.count > 5 %>

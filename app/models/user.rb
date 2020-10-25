@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :collaborations, through: :project_members, source: :project, class_name: 'Project'
   has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id'
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
+  has_many :reported_tasks, class_name: 'Task', foreign_key: 'reporter_id'
+  has_many :tasks, class_name: 'Task', foreign_key: 'assignee_id'
 
   validates :name, presence: true
 

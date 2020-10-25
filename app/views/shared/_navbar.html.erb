@@ -21,11 +21,7 @@
           <li class="nav-item"><%= user_nickname(current_user) %></li>
           <li class="nav-item dropdown">
             <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
-              <% if current_user.avatar.attached? %>
-                <%= image_tag current_user.avatar.variant(combine_options: {resize: '40x40^', extent: '40x40', gravity: 'Center'}), class: "rounded-circle" %>
-              <% else %>
-                <%= image_tag 'avatar.png', height: 40, width: 40, class: "rounded-circle" %>
-              <% end %>
+              <%= user_avatar(user: current_user, size: 40) %>
             <% end %>
             <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
               <% if current_user.admin? %>

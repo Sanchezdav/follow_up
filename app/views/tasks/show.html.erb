@@ -27,8 +27,8 @@
       </div>
       <div class="task__reporter p-2">
         <h6 class="font-weight-bold">Reporter</h6>
-        <%= image_tag 'avatar.png', height: 30, width: 30, class: "rounded-circle" %>
-        <span>Peter Parker</span>
+        <a href="#"><%= user_avatar(user: @task.reporter, size: 30) %></a>
+        <span class="ml-1"><%= @task.reporter.name.familiar %></span>
       </div>
     </div>
   </div>

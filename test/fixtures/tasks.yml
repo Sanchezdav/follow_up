@@ -2,18 +2,22 @@
 #
 # Table name: tasks
 #
-#  id         :bigint           not null, primary key
-#  position   :integer
-#  slug       :string
-#  title      :string           default(""), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  label_id   :bigint           not null
+#  id          :bigint           not null, primary key
+#  position    :integer
+#  slug        :string
+#  title       :string           default(""), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  assignee_id :integer
+#  label_id    :bigint           not null
+#  reporter_id :integer
 #
 # Indexes
 #
-#  index_tasks_on_label_id  (label_id)
-#  index_tasks_on_slug      (slug)
+#  index_tasks_on_assignee_id  (assignee_id)
+#  index_tasks_on_label_id     (label_id)
+#  index_tasks_on_reporter_id  (reporter_id)
+#  index_tasks_on_slug         (slug)
 #
 # Foreign Keys
 #

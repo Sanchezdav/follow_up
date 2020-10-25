@@ -9,6 +9,7 @@ class TasksController < ApplicationController
   def create
     @task = @label.tasks.new(task_params)
     @task.label = Label.friendly.find(params[:status])
+    @task.reporter = current_user
     @task.save
 
     if @task.errors.any?
