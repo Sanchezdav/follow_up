@@ -1,9 +1,12 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :project, only: :show
   before_action :set_label, only: :create
   before_action :set_task, only: :show
 
   def show
+    @members = @project.members
+    @labels = @project.labels
   end
 
   def create
@@ -22,7 +25,7 @@ class TasksController < ApplicationController
   private
 
   def project
-    @project ||= current_user.projects.friendly.find(params[:project_id])
+    @project ||= current_user.collaborations.friendly.find(params[:project_id])
   end
 
   def set_label
