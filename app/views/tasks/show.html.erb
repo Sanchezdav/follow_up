@@ -31,14 +31,18 @@
 
         <% if @task.assignee %>
           <div class="mt-2">
-            <a href="#"><%= user_avatar(user: @task.assignee, size: 30) %></a>
+            <a href="#" class="text-decoration-none">
+              <%= render(UserAvatarComponent.new(user: @task.assignee, size: 30)) %>
+            </a>
             <span class="ml-1"><%= @task.assignee.name.familiar %></span>
           </div>
         <% end %>
       </div>
       <div class="task__reporter p-2">
         <h6 class="font-weight-bold">Reporter</h6>
-        <a href="#"><%= user_avatar(user: @task.reporter, size: 30) %></a>
+        <a href="#" class="text-decoration-none">
+          <%= render(UserAvatarComponent.new(user: @task.reporter, size: 30)) %>
+        </a>
         <span class="ml-1"><%= @task.reporter.name.familiar %></span>
       </div>
     </div>

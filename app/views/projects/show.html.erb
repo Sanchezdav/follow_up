@@ -12,7 +12,9 @@
         <ul class="project-page__avatars">
           <% @members.each do |member| %>
             <li class="project-page__avatars__item">
-              <a href="#"><%= user_avatar(user: member, size: 40) %></a>
+              <a href="#">
+                <%= render(UserAvatarComponent.new(user: member, size: 40)) %>
+              </a>
             </li>
           <% end %>
           <% if @project.members.count > 5 %>
@@ -42,7 +44,7 @@
           </h3>
           <div id="tasks-list-<%= label.slug %>">
             <% if label.tasks.any? %>
-              <%= render label.tasks %>
+              <%= render(TaskCardComponent.with_collection(label.tasks)) %>
             <% else %>
               <div class="card empty-card mb-3">
                 <div class="card-body">

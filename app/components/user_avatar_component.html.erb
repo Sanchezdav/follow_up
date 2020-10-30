@@ -1,0 +1,7 @@
+<% if avatar_attached %>
+  <%= image_tag(@user.avatar.variant(combine_options: {
+    resize_to_limit: [@size*2, @size*2]
+  }), height: @size, width: @size, class: 'rounded-circle') %>
+<% else %>
+  <%= image_tag('avatar.png', height: @size, width: @size, class: 'rounded-circle') %>
+<% end %>

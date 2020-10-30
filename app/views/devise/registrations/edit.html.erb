@@ -6,7 +6,7 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="mb-3 text-center">
-        <%= user_avatar(user: resource, size: 100) %>
+        <%= render(UserAvatarComponent.new(user: resource, size: 100)) %>
         <div class="mt-3 text-center">
           <%= f.file_field :avatar %>
         </div>

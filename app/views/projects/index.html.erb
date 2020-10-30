@@ -8,9 +8,7 @@
   </div>
   <section>
     <div class="row px-3">
-      <% @projects.each do |project| %>
-        <%= render(ProjectCardComponent.new(project: project)) %>
-      <% end %>
+      <%= render(ProjectCardComponent.with_collection(@projects)) %>
     </div>
   </section>
 <% else %>

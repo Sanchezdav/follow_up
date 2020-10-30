@@ -17,14 +17,4 @@ module ApplicationHelper
   def user_nickname(user)
     user.username || user.name.mentionable || user.email.split('@')[0]
   end
-
-  def user_avatar(user:, size:)
-    if user.avatar.attached?
-      image_tag(user.avatar.variant(combine_options: {
-        resize_to_limit: [size*2, size*2]
-      }), height: size, width: size, class: 'rounded-circle')
-    else
-      image_tag('avatar.png', height: size, width: size, class: 'rounded-circle')
-    end
-  end
 end
