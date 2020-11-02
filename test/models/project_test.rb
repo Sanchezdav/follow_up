@@ -2,12 +2,13 @@
 #
 # Table name: projects
 #
-#  id         :bigint           not null, primary key
-#  name       :string           default(""), not null
-#  slug       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  name        :string           default(""), not null
+#  slug        :string
+#  tasks_count :integer          default(0)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
 #
 # Indexes
 #

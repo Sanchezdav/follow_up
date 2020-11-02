@@ -21,7 +21,7 @@ class Label < ApplicationRecord
   friendly_id :name, use: :slugged
   acts_as_list scope: :labelable
 
-  belongs_to :labelable, polymorphic: true
+  belongs_to :labelable, polymorphic: true, counter_cache: :tasks_count
   has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
 
   def color
