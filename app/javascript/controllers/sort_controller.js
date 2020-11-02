@@ -20,6 +20,7 @@ export default class extends ApplicationController {
     let parsedTasks = Array.from(tasks).map((task, index) => {
       return { id: task.dataset.taskId, position: (index + 1) }
     })
+
     this.listTarget.dataset.tasks = JSON.stringify(parsedTasks)
     this.stimulate('TaskReflex#sort', this.listTarget)
   }

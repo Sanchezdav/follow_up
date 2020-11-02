@@ -17,9 +17,10 @@ class TaskReflex < ApplicationReflex
 
   def sort
     tasks = JSON.parse(element.dataset[:tasks])
+    label = Label.friendly.find(element.dataset[:label_id])
     tasks.each do |task|
       task_record = Task.friendly.find(task['id'])
-      task_record.update!(position: task['position'])
+      task_record.update!(label: label, position: task['position'])
     end
   end
 end
