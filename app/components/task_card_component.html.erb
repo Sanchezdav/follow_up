@@ -1,4 +1,4 @@
-<div class="task card mb-3">
+<div class="task card mb-3" data-task-id="<%= @task.slug %>">
   <%= link_to project_task_url(@task.label.labelable, @task), class: 'stretched-link' do %>
     <div class="card-body">
       <h6><%= @task.title %></h6>

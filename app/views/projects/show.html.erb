@@ -42,9 +42,13 @@
           <h3 class="mb-3">
             <span class="badge rounded-pill <%= label.color %>"><%= label.name %></span>
           </h3>
-          <div id="tasks-list-<%= label.slug %>">
+          <div>
             <% if label.tasks.any? %>
-              <%= render(TaskCardComponent.with_collection(label.tasks)) %>
+              <div data-controller="sort">
+                <div id="tasks-list-<%= label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
+                  <%= render(TaskCardComponent.with_collection(label.tasks)) %>
+                </div>
+              </div>
             <% else %>
               <div class="card empty-card mb-3">
                 <div class="card-body">
