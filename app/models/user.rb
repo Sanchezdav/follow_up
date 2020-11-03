@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
   has_many :reported_tasks, class_name: 'Task', foreign_key: 'reporter_id'
   has_many :tasks, class_name: 'Task', foreign_key: 'assignee_id'
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true
 

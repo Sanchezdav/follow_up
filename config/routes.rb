@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
-    resources :tasks
-    resources :invites
+    resources :tasks do
+      resources :comments, except: [:new, :edit]
+    end
+    resources :invites, only: :create
   end
 end

@@ -1,0 +1,13 @@
+<%= form_with(
+      model: [@project, @task, @comment],
+      html: { data: { 
+                type: "html",
+                action: "ajax:error->forms#onSubmitError ajax:success->forms#onSubmitSuccess" }}) do |form| %>
+  <div class="mb-3">
+    <div data-target="forms.errorsList"></div>
+  </div>
+  <div class="mb-3">
+    <%= form.rich_text_area :content, data: { target: 'forms.input' }%>
+  </div>
+  <%= form.submit 'Comment', class: 'btn btn-primary btn-block', data: { target: 'forms.submitButton', disable_with: 'Commenting...' } %>
+<% end %>

@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   def show
     @members = @project.members
     @labels = @project.labels
+    @comment = Comment.new
   end
 
   def create
@@ -16,7 +17,7 @@ class TasksController < ApplicationController
     @task.save
 
     if @task.errors.any?
-      render partial: 'errors', locals: { task: @task }, status: :unprocessable_entity
+      render partial: 'shared/errors', locals: { resource: @task }, status: :unprocessable_entity
     else
       redirect_to @project
     end

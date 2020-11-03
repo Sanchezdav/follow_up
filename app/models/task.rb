@@ -32,6 +32,7 @@ class Task < ApplicationRecord
   belongs_to :label
   belongs_to :reporter, class_name: 'User'
   belongs_to :assignee, class_name: 'User', optional: true
+  has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
 
   validates :title, presence: true, length: {minimum: 2, maximum: 50}
   validate :has_description

@@ -5,6 +5,7 @@ export default class extends Controller {
     'input',
     'submitButton',
     'errorsList',
+    'content'
   ]
 
   connect () {
@@ -23,10 +24,10 @@ export default class extends Controller {
   }
 
   // Example form ajax:success->form#onSubmitSuccess
-  // onSubmitSuccess(event) {
-  //   let [data, status, xhr] = event.detail;
-  //   contentWrapper.insertAdjacentHTML("beforeend", xhr.response);
-  //   cleanForm();
-  //   this.submitButtonTarget.classList.remove("disabled");
-  // }
+  onSubmitSuccess(event) {
+    let [data, status, xhr] = event.detail;
+    this.contentTarget.insertAdjacentHTML("beforebegin", xhr.response);
+    this.clean();
+    this.submitButtonTarget.classList.remove("disabled");
+  }
 }
