@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def show
     @members = @project.members
     @labels = @project.labels
-    @comment = Comment.new
+    @comment ||= current_user.comments.new
   end
 
   def create

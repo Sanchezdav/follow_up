@@ -21,7 +21,7 @@
 class Comment < ApplicationRecord
   has_rich_text :content
   belongs_to :user
-  belongs_to :task
+  belongs_to :task, counter_cache: true
 
   validate :has_content
 
