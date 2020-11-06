@@ -23,6 +23,8 @@ gem 'acts_as_list'
 gem 'view_component', require: 'view_component/engine'
 gem 'mjml-rails'
 gem 'stimulus_reflex', '~> 3.3'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -32,8 +32,11 @@
           <%= render 'comments/form' %>
         </div>
         <div class="mt-3">
-          <% if @task.comments.any? %>
-            <%= render(CommentComponent.with_collection(@task.comments)) %>
+          <% if @comments.any? %>
+            <%= render(CommentComponent.with_collection(@comments)) %>
+            <div class="d-flex justify-content-center">
+              <%= will_paginate @comments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+            </div>
           <% else %>
             <h5 class="text-center mt-3">Be the first adding a comment! 😃</h5>
           <% end %>
