@@ -48,11 +48,11 @@
         <%= label_tag 'Status', nil, { class: 'form-label font-weight-bold' } %>
         <%= select_tag "status",
               options_from_collection_for_select(@labels, 'slug', 'name', @task.label.slug),
-              { class: 'form-select', data: { action: 'change->task#update_status' } } %>
+              { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status' } } %>
       </div>
       <div class="task__assignee p-2 mb-3">
         <%= label_tag 'Assignee', nil, { class: 'form-label font-weight-bold' } %>
-        <%= select_tag "assignee", options_from_collection_for_select(@members, 'id', 'name', @task.assignee&.id), { include_blank: 'Choose someone', class: 'form-select', data: { action: 'change->task#update_assignee' }} %>
+        <%= select_tag "assignee", options_from_collection_for_select(@members, 'id', 'name', @task.assignee&.id), { include_blank: 'Choose someone', class: 'form-select cursor-pointer', data: { action: 'change->task#update_assignee' }} %>
 
         <% if @task.assignee %>
           <div class="mt-2">
