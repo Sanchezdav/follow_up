@@ -17,10 +17,10 @@
               </a>
             </li>
           <% end %>
-          <% if @project.members.count > 5 %>
+          <% if @members.count > 5 %>
             <li class="project-page__avatars__item">
               <a href="#">
-                <%= @project.members.count - 5 %>+
+                <%= @members.count - 5 %>+
               </a>
             </li>
           <% end %>
@@ -36,29 +36,8 @@
     </div>
   </header>
   <div class="project-page__content px-3 py-4">
-    <div class="row">
-      <% @project.labels.each do |label| %>
-        <div class="col-md-3">
-          <h3 class="mb-3">
-            <span class="badge rounded-pill <%= label.color %>"><%= label.name %></span>
-          </h3>
-          <div data-controller="sort">
-            <% if label.tasks.any? %>
-              <div id="tasks-list-<%= label.slug %>" data-label-id="<%= label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
-                <%= render(TaskCardComponent.with_collection(label.tasks)) %>
-              </div>
-            <% else %>
-              <div class="card empty-card">
-                <div class="card-body">
-                  <span class="text-muted">There are no tasks</span>
-                </div>
-              </div>
-              <div class="p-3" id="tasks-list-<%= label.slug %>" data-label-id="<%= label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+    <div id="project-<%= @project.slug %>-board" class="row">
+      <%= render(ProjectBoardComponent.with_collection(@project.labels)) %>
     </div>
     <%= render 'tasks/form_modal', project: @project, task: @task %>
     <%= render 'invites/form_modal', project: @project, invite: @invite %>

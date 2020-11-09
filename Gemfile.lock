@@ -268,6 +268,7 @@ DEPENDENCIES
   annotate
   bootsnap (>= 1.4.2)
   byebug
+  cable_ready (~> 4.3)
   capybara (>= 2.15)
   devise
   friendly_id (~> 5.4.0)

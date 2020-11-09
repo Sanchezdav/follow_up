@@ -1,0 +1,20 @@
+<div id="<%= dom_id(@label) %>" class="col-md-3">
+  <h3 class="mb-3">
+    <span class="badge rounded-pill <%= @label.color %>"><%= @label.name %></span>
+  </h3>
+  <div data-controller="sort">
+    <% if @label.tasks.any? %>
+      <div id="tasks-list-<%= @label.slug %>" data-label-id="<%= @label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
+        <%= render(TaskCardComponent.with_collection(@label.tasks)) %>
+      </div>
+    <% else %>
+      <div class="card empty-card">
+        <div class="card-body">
+          <span class="text-muted">There are no tasks</span>
+        </div>
+      </div>
+      <div class="p-3" id="tasks-list-<%= @label.slug %>" data-label-id="<%= @label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
+      </div>
+    <% end %>
+  </div>
+</div>

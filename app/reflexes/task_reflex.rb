@@ -22,5 +22,16 @@ class TaskReflex < ApplicationReflex
       task_record = Task.friendly.find(task['id'])
       task_record.update!(label: label, position: task['position'])
     end
+
+    project = label.labelable
+    target_id = "#project-#{project.slug}-board"
+
+    cable_ready['project'].inner_html(
+      selector: target_id,
+      html: ApplicationController.render(
+        ProjectBoardComponent.with_collection(project.labels)
+      )
+    )
+    cable_ready.broadcast
   end
 end
