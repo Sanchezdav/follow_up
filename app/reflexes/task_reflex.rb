@@ -25,10 +25,15 @@ class TaskReflex < ApplicationReflex
 
     project = label.labelable
     target_id = "#project-#{project.slug}-board"
+    renderer = ApplicationController.renderer.new(
+      http_host: ENV['RAILS_APPLICATION_URL'].presence || 'http://my-domain.com:3000',
+      https:     Rails.env.production?
+    )
 
-    cable_ready['project'].inner_html(
+    cable_ready['project'].morph(
       selector: target_id,
-      html: ApplicationController.render(
+      children_only: true,
+      html: renderer.render(
         ProjectBoardComponent.with_collection(project.labels)
       )
     )
