@@ -6,10 +6,18 @@
         <div class="d-flex align-items-center justify-content-between mb-2">
           <span class="font-weight-bold"><%= user.name %></span>
           <span class="text-muted font-weight-light">
-            <%= time_ago_in_words(@comment.created_at) %>
+            <%= created_ago %>
           </span>
         </div>
         <%= @comment.content %>
+        <% if is_my_comment %>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-secondary btn-sm">
+              Edit
+            </button>
+            <button class="btn btn-outline-danger btn-sm ml-2">Delete</button>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
