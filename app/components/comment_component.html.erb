@@ -11,11 +11,12 @@
         </div>
         <%= @comment.content %>
         <% if is_my_comment %>
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-outline-secondary btn-sm">
-              Edit
+          <div class="d-flex justify-content-end mt-2">
+            <button class="btn btn-link text-danger btn-sm ml-2"
+                    data-reflex="click->Comment#destroy"
+                    data-comment-id="<%= @comment.id %>">
+              Delete
             </button>
-            <button class="btn btn-outline-danger btn-sm ml-2">Delete</button>
           </div>
         <% end %>
       </div>

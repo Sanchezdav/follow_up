@@ -26,6 +26,11 @@ class CommentReflex < ApplicationReflex
     cable_ready.broadcast
   end
 
+  def destroy
+    comment = Comment.find(element.dataset[:comment_id])
+    comment.destroy
+  end
+
   private
 
   def comment_params
