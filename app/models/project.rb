@@ -25,7 +25,7 @@ class Project < ApplicationRecord
 
   friendly_id :name, use: :slugged
 
-  MAIN_LABELS = ['Backlog', 'In Progress', 'QA', 'Done']
+  MAIN_LABELS = ['Backlog', 'ToDo', 'In Progress', 'QA', 'Done']
 
   before_create :set_main_labels
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    resources :labels, only: :show
     resources :tasks do
       resources :comments, except: [:new, :edit]
     end

@@ -7,7 +7,7 @@
         <span><%= @project.created_at.strftime("%B %d, %Y") %></span>
       </p>
     </div>
-    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
       <div class="d-flex align-items-center mb-2">
         <ul class="project-page__avatars">
           <% @members.each do |member| %>
@@ -34,12 +34,25 @@
         Add a task
       </a>
     </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex">
+        <div class="mr-4">
+          <h5 class="fw-bold m-0"><%= @backlog.tasks.count %></h5>
+          <span class="text-muted">Backlog</span>
+        </div>
+        <div>
+          <h5 class="fw-bold m-0"><%= @project.tasks_count %></h5>
+          <span class="text-muted">Total Project</span>
+        </div>
+      </div>
+      <%= link_to 'Go to Backlog', project_label_path(@project, @backlog), class: 'btn btn-outline-secondary' %>
+    </div>
   </header>
-  <div class="project-page__content px-3 py-4">
+  <main class="project-page__content px-3 py-4">
     <div id="project-<%= @project.slug %>-board" class="row">
-      <%= render(ProjectBoardComponent.with_collection(@project.labels)) %>
+      <%= render(ProjectBoardComponent.with_collection(@labels)) %>
     </div>
     <%= render 'tasks/form_modal', project: @project, task: @task %>
     <%= render 'invites/form_modal', project: @project, invite: @invite %>
-  </div>
+  </main>
 </section>

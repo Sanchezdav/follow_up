@@ -50,7 +50,7 @@
         <%= label_tag 'Status', nil, { class: 'form-label font-weight-bold' } %>
         <%= select_tag "status",
               options_from_collection_for_select(@labels, 'slug', 'name', @task.label.slug),
-              { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status' } } %>
+              { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status', task_id: @task.slug } } %>
       </div>
       <div class="task__assignee p-2 mb-3">
         <%= label_tag 'Assignee', nil, { class: 'form-label font-weight-bold' } %>

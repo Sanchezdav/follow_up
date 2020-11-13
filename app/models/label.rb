@@ -24,9 +24,11 @@ class Label < ApplicationRecord
   belongs_to :labelable, polymorphic: true, counter_cache: :tasks_count
   has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
 
+  scope :without_backlog, -> { where.not('slug LIKE ?', '%backlog%') }
+
   def color
     case slug
-    when /backlog/
+    when /todo/
       'bg-info'
     when  /in-progress/
       'bg-primary'

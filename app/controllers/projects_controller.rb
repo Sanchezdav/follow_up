@@ -13,7 +13,11 @@ class ProjectsController < ApplicationController
   def show
     @task = Task.new
     @invite = @project.invites.new
+
+    all_labels = @project.labels
     @members = @project.members.limit(5).order(created_at: :asc)
+    @labels = all_labels.without_backlog
+    @backlog = all_labels.find_by_name('Backlog')
   end
 
   # GET /projects/new
@@ -70,7 +74,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.includes(:members, labels: :tasks).friendly.find(params[:id])
+      @project ||= Project.includes(:members, labels: :tasks).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
