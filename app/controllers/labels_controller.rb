@@ -13,7 +13,7 @@ class LabelsController < ApplicationController
   end
 
   def set_label
-    @label ||= project.labels.friendly.find(params[:id])
+    @label ||= project.labels.includes(tasks: :label).friendly.find(params[:id])
   end
   
 end
