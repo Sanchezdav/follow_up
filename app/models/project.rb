@@ -33,7 +33,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :tasks, through: :labels
   has_many :project_members
-  has_many :members, through: :project_members, source: :user, class_name: 'User'
+  has_many :members, through: :project_members, source: :user, class_name: 'User', dependent: :destroy
   has_many :invites
 
   validates :name, presence: true, length: {minimum: 2, maximum: 50}

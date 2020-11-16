@@ -4,7 +4,7 @@
   <div class="text-right">
     <span class="text-muted">
       <i class="far fa-file-alt"></i>
-      <%= pluralize(@project.tasks_count, 'task') %>
+      <%= pluralize(@project.tasks.count, 'task') %>
     </span>
   </div>
 <% end %>
