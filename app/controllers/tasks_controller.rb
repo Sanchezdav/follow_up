@@ -8,7 +8,9 @@ class TasksController < ApplicationController
     @members = @project.members
     @labels = @project.labels
     @comment ||= current_user.comments.new
-    @comments = @task.comments.paginate(page: params[:page], per_page: 10)
+    @comments = @task.comments.includes(:rich_text_content, user: :avatar_attachment).paginate(
+      page: params[:page], per_page: 10
+    )
   end
 
   def create
