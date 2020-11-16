@@ -38,6 +38,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
   gem 'letter_opener'
+  gem 'bullet'
 end
 
 group :test do
