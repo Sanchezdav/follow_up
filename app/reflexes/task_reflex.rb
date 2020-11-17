@@ -2,7 +2,7 @@
 
 class TaskReflex < ApplicationReflex
   def update_status
-    task = Task.friendly.find(params[:id])
+    task = Task.friendly.find(element.dataset[:task_id])
     label = Label.friendly.find(element.value)
     task.update!(label: label)
   end
