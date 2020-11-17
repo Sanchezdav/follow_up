@@ -5,6 +5,7 @@
 #  id             :bigint           not null, primary key
 #  comments_count :integer          default(0)
 #  position       :integer
+#  priority       :string
 #  slug           :string
 #  story_points   :integer
 #  title          :string           default(""), not null

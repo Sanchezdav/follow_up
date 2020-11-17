@@ -5,6 +5,7 @@
 #  id             :bigint           not null, primary key
 #  comments_count :integer          default(0)
 #  position       :integer
+#  priority       :string
 #  slug           :string
 #  story_points   :integer
 #  title          :string           default(""), not null
@@ -38,6 +39,24 @@ class Task < ApplicationRecord
 
   validates :title, presence: true, length: {minimum: 2, maximum: 50}
   validate :has_description
+
+  enum priority: {
+    trivial: 'trivial',
+    minor: 'minor',
+    major: 'major',
+    blocker: 'blocker'
+  }
+
+  def priority_icon
+    return '' unless priority
+
+    case priority
+    when 'trivial' then 'text-secondary fas fa-arrow-down'
+    when 'minor' then 'text-muted fas fa-angle-double-down'
+    when 'major' then 'text-info fas fa-angle-double-up'
+    when 'blocker' then 'text-danger fas fa-ban'
+    end
+  end
 
   private
 

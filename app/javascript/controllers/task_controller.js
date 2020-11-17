@@ -16,4 +16,8 @@ export default class extends ApplicationController {
   update_story_points(event) {
     this.stimulate('Task#update_story_points', event.currentTarget)
   }
+
+  update_priority(event) {
+    this.stimulate('Task#update_priority', event.currentTarget)
+  }
 }

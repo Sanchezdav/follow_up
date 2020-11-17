@@ -79,6 +79,13 @@
         </label>
         <%= number_field_tag 'story_points', @task.story_points, class: 'form-control', min: 1, data: { action: 'change->task#update_story_points' } %>
       </section>
+      <section class="task__priority p-2">
+        <label class="d-flex align-items-center form-label font-weight-bold">
+          Priority
+          <i class="ml-2 <%= @task.priority_icon %>"></i>
+        </label>
+        <%= select_tag 'priority', options_for_select(Task.priorities.map { |key, value| [key.capitalize, value]}, @task.priority), { include_blank: 'Choose the priority level', class: 'form-select cursor-pointer', data: { action: 'change->task#update_priority' }} %>
+      </section>
     </div>
   </div>
 </section>

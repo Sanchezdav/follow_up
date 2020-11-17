@@ -15,6 +15,7 @@
         <small><%= @task.comments_count %></small>
       </div>
       <div class="task__story-points">
+        <i class="<%= @task.priority_icon %>"></i>
         <span class="badge rounded-pill bg-secondary ml-2"><%= @task.story_points %></span>
       </div>
     </div>
