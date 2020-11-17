@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_03_051128) do
+ActiveRecord::Schema.define(version: 2020_11_17_024802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_051128) do
     t.integer "reporter_id"
     t.integer "assignee_id"
     t.integer "comments_count", default: 0
+    t.integer "story_points"
     t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["label_id"], name: "index_tasks_on_label_id"
     t.index ["reporter_id"], name: "index_tasks_on_reporter_id"

@@ -2,7 +2,7 @@
 
 class TaskReflex < ApplicationReflex
   def update_status
-    task = Task.friendly.find(element.dataset[:task_id])
+    task = Task.friendly.find(params[:id])
     label = Label.friendly.find(element.value)
 
     task.update!(label: label)
@@ -13,6 +13,12 @@ class TaskReflex < ApplicationReflex
     assignee = User.where(id: element.value).first || nil
 
     task.update!(assignee: assignee)
+  end
+
+  def update_story_points
+    task = Task.friendly.find(params[:id])
+
+    task.update!(story_points: element.value)
   end
 
   def sort

@@ -6,6 +6,7 @@
 #  comments_count :integer          default(0)
 #  position       :integer
 #  slug           :string
+#  story_points   :integer
 #  title          :string           default(""), not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null

@@ -50,7 +50,7 @@
         <%= label_tag 'Status', nil, { class: 'form-label font-weight-bold' } %>
         <%= select_tag "status",
               options_from_collection_for_select(@labels, 'slug', 'name', @task.label.slug),
-              { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status', task_id: @task.slug } } %>
+              { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status' } } %>
       </div>
       <div class="task__assignee p-2 mb-3">
         <%= label_tag 'Assignee', nil, { class: 'form-label font-weight-bold' } %>
@@ -65,13 +65,20 @@
           </div>
         <% end %>
       </div>
-      <div class="task__reporter p-2">
+      <div class="task__reporter p-2 mb-3">
         <h6 class="font-weight-bold">Reporter</h6>
         <a href="#" class="text-decoration-none">
           <%= render(UserAvatarComponent.new(user: @task.reporter, size: 30)) %>
         </a>
         <span class="ml-1"><%= @task.reporter.name.familiar %></span>
       </div>
+      <section class="task__story-points p-2 mb-3">
+        <label class="d-flex align-items-center form-label font-weight-bold">
+          Story Points
+          <span class="badge rounded-pill bg-secondary ml-2"><%= @task.story_points %></span>
+        </label>
+        <%= number_field_tag 'story_points', @task.story_points, class: 'form-control', min: 1, data: { action: 'change->task#update_story_points' } %>
+      </section>
     </div>
   </div>
 </section>

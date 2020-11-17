@@ -9,10 +9,13 @@
         <% end %>
       </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer d-flex align-items-center justify-content-between">
       <div class="task__comments">
         <i class="fas fa-comments mr-1"></i>
         <small><%= @task.comments_count %></small>
+      </div>
+      <div class="task__story-points">
+        <span class="badge rounded-pill bg-secondary ml-2"><%= @task.story_points %></span>
       </div>
     </div>
   <% end %>
