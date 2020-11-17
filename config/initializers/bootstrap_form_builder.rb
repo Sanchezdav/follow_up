@@ -7,6 +7,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     super(method, merge_class(options, 'form-control'))
   end
 
+  def number_field(method, options = {})
+    super(method, merge_class(options, 'form-control'))
+  end
+
   def email_field(method, options = {})
     super(method, merge_class(options, 'form-control'))
   end
@@ -17,6 +21,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   def text_field_with_label(method, options = {})
     label_default(method) + text_field(method, options) + attribute_errors(@object, method)
+  end
+
+  def number_field_with_label(method, options = {})
+    label_default(method) + number_field(method, options) + attribute_errors(@object, method)
   end
 
   def email_field_with_label(method, options = {})
