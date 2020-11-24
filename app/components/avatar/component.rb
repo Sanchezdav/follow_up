@@ -1,4 +1,4 @@
-class UserAvatarComponent < ViewComponent::Base
+class Avatar::Component < ViewComponent::Base
   def initialize(user:, size:)
     @user = user
     @size = size

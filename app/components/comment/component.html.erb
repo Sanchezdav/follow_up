@@ -1,7 +1,7 @@
 <div class="card bg-light rounded mb-3">
   <div class="card-body">
     <div class="d-flex align-items-start">
-      <%= render(UserAvatarComponent.new(user: user, size: 30)) %>
+      <%= render(Avatar::Component.new(user: user, size: 30)) %>
       <div class="ml-3 w-100">
         <div class="d-flex align-items-center justify-content-between mb-2">
           <span class="font-weight-bold"><%= user.name %></span>

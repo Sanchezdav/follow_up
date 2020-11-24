@@ -1,4 +1,6 @@
-class CommentComponent < ViewComponent::Base
+class Comment::Component < ViewComponent::Base
+  with_collection_parameter :comment
+
   def initialize(comment:, current_user: nil)
     @comment = comment
     @current_user = current_user

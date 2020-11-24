@@ -15,6 +15,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap";
 import "../stylesheets/application";
 import "controllers"
+import "../components"
 
 require.context('../images', true)
 

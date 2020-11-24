@@ -1,4 +1,4 @@
-class ProjectBoardComponent < ViewComponent::Base
+class Board::Component < ViewComponent::Base
   with_collection_parameter :label
 
   def initialize(label:)

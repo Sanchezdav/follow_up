@@ -38,11 +38,13 @@ class TaskReflex < ApplicationReflex
       https:     Rails.env.production?
     )
 
+    labels = project.labels.includes(tasks: :label).without_backlog
+
     cable_ready['project'].morph(
       selector: target_id,
       children_only: true,
       html: renderer.render(
-        ProjectBoardComponent.with_collection(project.labels)
+        Board::Component.with_collection(labels)
       )
     )
     cable_ready.broadcast

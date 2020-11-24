@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <small class="text-muted"><%= upcase_task_slug %></small>
         <% if @task.assignee %>
-          <%= render(UserAvatarComponent.new(user: @task.assignee, size: 25)) %>
+          <%= render(Avatar::Component.new(user: @task.assignee, size: 25)) %>
         <% end %>
       </div>
     </div>

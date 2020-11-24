@@ -13,31 +13,29 @@
       </div>
       <%= link_to 'Back to board', project_path(@project) %>
     </div>
+
     <div class="col-md-8">
-      <header class="task-page__header mb-4">
-        <h2 class="font-weight-bold"><%= @task.title %></h2>
-      </header>
-      <div>
-        <%= @task.description %>
-      </div>
-      <div class="mt-4">
-        <h4 class="font-weight-bold mb-3">Comments (<%= @task.comments_count %>)</h4>
-
-        <% if @comment.errors.any? %>
-          <ul class="list-group mb-3">
-            <% @comment.errors.full_messages.each do |error| %>
-              <li class="list-group-item list-group-item-danger"><%= error %></li>
-            <% end %>
-          </ul>
-        <% end %>
-
+      <main>
+        <header class="task-page__header mb-4">
+          <h2 class="font-weight-bold"><%= @task.title %></h2>
+        </header>
         <div>
-          <%= render 'comments/form' %>
+          <%= @task.description %>
         </div>
+      </main>
+
+      <section class="mt-4">
+        <h4 class="font-weight-bold mb-3">Comments (<%= @task.comments_count %>)</h4>
+        <% if @comment.errors.any? %>
+          <%= render 'shared/errors', resource: @comment %>
+        <% end %>
+        <section>
+          <%= render 'comments/form' %>
+        </section>
         <div class="mt-3">
           <% if @comments.any? %>
             <div id="task-<%= @task.slug %>-comments">
-              <%= render(CommentComponent.with_collection(@comments, current_user: current_user)) %>
+              <%= render(Comment::Component.with_collection(@comments, current_user: current_user)) %>
             </div>
             <div class="d-flex justify-content-center">
               <%= will_paginate @comments, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
@@ -46,8 +44,9 @@
             <h5 class="text-center mt-3">Be the first adding a comment! 😃</h5>
           <% end %>
         </div>
-      </div>
+      </section>
     </div>
+
     <div class="col-md-4">
       <div class="bg-light rounded-lg p-2 mb-3">
         <%= label_tag 'Status', nil, { class: 'form-label font-weight-bold' } %>
@@ -55,6 +54,7 @@
               options_from_collection_for_select(@labels, 'slug', 'name', @task.label.slug),
               { class: 'form-select cursor-pointer', data: { action: 'change->task#update_status', task_id: @task.slug } } %>
       </div>
+
       <div class="task__assignee p-2 mb-3">
         <%= label_tag 'Assignee', nil, { class: 'form-label font-weight-bold' } %>
         <%= select_tag "assignee", options_from_collection_for_select(@members, 'id', 'name', @task.assignee&.id), { include_blank: 'Choose someone', class: 'form-select cursor-pointer', data: { action: 'change->task#update_assignee' }} %>
@@ -62,19 +62,21 @@
         <% if @task.assignee %>
           <div class="mt-2">
             <a href="#" class="text-decoration-none">
-              <%= render(UserAvatarComponent.new(user: @task.assignee, size: 30)) %>
+              <%= render(Avatar::Component.new(user: @task.assignee, size: 30)) %>
             </a>
             <span class="ml-1"><%= @task.assignee.name.familiar %></span>
           </div>
         <% end %>
       </div>
-      <div class="task__reporter p-2 mb-3">
+
+      <section class="task__reporter p-2 mb-3">
         <h6 class="font-weight-bold">Reporter</h6>
         <a href="#" class="text-decoration-none">
-          <%= render(UserAvatarComponent.new(user: @task.reporter, size: 30)) %>
+          <%= render(Avatar::Component.new(user: @task.reporter, size: 30)) %>
         </a>
         <span class="ml-1"><%= @task.reporter.name.familiar %></span>
-      </div>
+      </section>
+
       <section class="task__story-points p-2 mb-3">
         <label class="d-flex align-items-center form-label font-weight-bold">
           Story Points
@@ -82,6 +84,7 @@
         </label>
         <%= number_field_tag 'story_points', @task.story_points, class: 'form-control', min: 1, data: { action: 'change->task#update_story_points' } %>
       </section>
+
       <section class="task__priority p-2 mb-3">
         <label class="d-flex align-items-center form-label font-weight-bold">
           Priority
@@ -89,6 +92,7 @@
         </label>
         <%= select_tag 'priority', options_for_select(Task.priorities.map { |key, value| [key.capitalize, value]}, @task.priority), { include_blank: 'Choose the priority level', class: 'form-select cursor-pointer', data: { action: 'change->task#update_priority' }} %>
       </section>
+
       <section class="task__deprecate p-2">
         <% if @task.discarded? %>
           <button type="button" class="btn btn-info" data-action="click->task#restore">
@@ -97,8 +101,8 @@
           </button>
         <% else %>
           <button type="button" class="btn btn-outline-danger" data-action="click->task#destroy">
-            <i class="fas fa-trash mr-2"></i>
             Deprecate
+            <i class="fas fa-trash ml-2"></i>
           </button>
         <% end %>
       </section>

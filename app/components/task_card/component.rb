@@ -1,4 +1,4 @@
-class TaskCardComponent < ViewComponent::Base
+class TaskCard::Component < ViewComponent::Base
   with_collection_parameter :task
 
   def initialize(task:)

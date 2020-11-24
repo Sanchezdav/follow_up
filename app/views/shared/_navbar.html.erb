@@ -21,7 +21,7 @@
           <li class="nav-item"><%= user_nickname(current_user) %></li>
           <li class="nav-item dropdown">
             <%= link_to "#", id: "navbar-dropdown", class: "nav-link dropdown-toggle", data: { target: "nav-account-dropdown", toggle: "dropdown" }, aria: { haspopup: true, expanded: false } do %>
-              <%= render(UserAvatarComponent.new(user: current_user, size: 40)) %>
+              <%= render(Avatar::Component.new(user: current_user, size: 40)) %>
             <% end %>
             <div id="nav-account-dropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
               <% if current_user.admin? %>

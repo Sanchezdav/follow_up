@@ -8,18 +8,7 @@ class InvitesController < ApplicationController
       @invite.sender = current_user
   
       if @invite.save
-        if @invite.recipient
-          ProjectInviteMailer.with(invite: @invite).existing_user_invite.deliver_later
-          @invite.recipient.collaborations.push(@invite.project)
-        else
-          ProjectInviteMailer
-            .with(
-              invite: @invite,
-              url: new_user_registration_url(invite_token: @invite.token)
-            )
-            .new_user_invite
-            .deliver_later
-        end
+        send_invite_mail(@invite)
       end
     end
 
@@ -29,10 +18,23 @@ class InvitesController < ApplicationController
   private
 
   def set_project
-    @project = current_user.projects.friendly.find(params[:project_id])
+    @project ||= current_user.projects.friendly.find(params[:project_id])
   end
 
   def invite_params
     params.require(:invite).permit(:emails)
+  end
+
+  def send_invite_mail(invite)
+    if invite.recipient
+      ProjectInviteMailer.with(invite: invite).existing_user_invite.deliver_later
+      invite.recipient.collaborations.push(invite.project)
+    else
+      ProjectInviteMailer
+        .with(invite: invite,
+              url: new_user_registration_url(invite_token: invite.token))
+        .new_user_invite
+        .deliver_later
+    end
   end
 end

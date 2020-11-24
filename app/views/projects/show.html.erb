@@ -4,27 +4,12 @@
       <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
       <p class="d-flex flex-column align-items-end">
         <span class="text-muted">Created on</span>
-        <span><%= @project.created_at.strftime("%B %d, %Y") %></span>
+        <span><%= formatted_date(@project.created_at) %></span>
       </p>
     </div>
     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
       <div class="d-flex align-items-center mb-2">
-        <ul class="project-page__avatars">
-          <% @members.each do |member| %>
-            <li class="project-page__avatars__item">
-              <a href="#">
-                <%= render(UserAvatarComponent.new(user: member, size: 40)) %>
-              </a>
-            </li>
-          <% end %>
-          <% if @members.count > 5 %>
-            <li class="project-page__avatars__item">
-              <a href="#">
-                <%= @members.count - 5 %>+
-              </a>
-            </li>
-          <% end %>
-        </ul>
+        <%= render(Members::Component.new(members: @members)) %>
         <a href="#" class="btn btn-outline-secondary ml-4" data-toggle="modal" data-target="#invite-modal">
           Invite
           <i class="fas fa-plus ml-1"></i>
@@ -49,7 +34,7 @@
   </header>
   <main class="project-page__content px-3 py-4">
     <div id="project-<%= @project.slug %>-board" class="row">
-      <%= render(ProjectBoardComponent.with_collection(@labels)) %>
+      <%= render(Board::Component.with_collection(@labels)) %>
     </div>
     <%= render 'tasks/form_modal', project: @project, task: @task %>
     <%= render 'invites/form_modal', project: @project, invite: @invite %>

@@ -1,0 +1,14 @@
+<ul class="members">
+  <% @members.each do |member| %>
+    <li class="members__item">
+      <a href="#">
+        <%= render(Avatar::Component.new(user: member, size: 40)) %>
+      </a>
+    </li>
+  <% end %>
+  <% if @members.count > @members_limit %>
+    <li class="members__item">
+      <a href="#"><%= @members.count - @members_limit %>+</a>
+    </li>
+  <% end %>
+</ul>

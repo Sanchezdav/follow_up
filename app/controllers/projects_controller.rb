@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = current_user.collaborations
+    @projects = current_user.collaborations.includes(:tasks)
   end
 
   # GET /projects/1
@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
     all_labels = @project.labels
     @members = @project.members.limit(5).order(created_at: :asc)
-    @labels = all_labels.without_backlog
+    @labels = all_labels.includes(tasks: :label).without_backlog
     @backlog = all_labels.find_by_name('Backlog')
   end
 
@@ -78,7 +78,9 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project ||= Project.includes(labels: [tasks: [assignee: :avatar_attachment]]).friendly.find(params[:id])
+      @project ||= Project.includes(
+        labels: [tasks: [assignee: :avatar_attachment]]
+      ).friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

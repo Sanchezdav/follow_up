@@ -17,4 +17,8 @@ module ApplicationHelper
   def user_nickname(user)
     user.username || user.name.mentionable || user.email.split('@')[0]
   end
+
+  def formatted_date(date)
+    date.strftime("%B %d, %Y")
+  end
 end

@@ -1,4 +1,4 @@
-class ProjectCardComponent < ViewComponent::Base
+class ProjectCard::Component < ViewComponent::Base
   with_collection_parameter :project
 
   def initialize(project:)
