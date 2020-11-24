@@ -20,4 +20,12 @@ export default class extends ApplicationController {
   update_priority(event) {
     this.stimulate('Task#update_priority', event.currentTarget)
   }
+
+  destroy(event) {
+    this.stimulate('Task#destroy', event.currentTarget)
+  }
+
+  restore(event) {
+    this.stimulate('Task#restore', event.currentTarget)
+  }
 }

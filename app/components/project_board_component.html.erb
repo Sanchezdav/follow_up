@@ -3,9 +3,9 @@
     <span class="badge rounded-pill <%= @label.color %>"><%= @label.name %></span>
   </h3>
   <div data-controller="sort">
-    <% if @label.tasks.any? %>
+    <% if @label.tasks.kept.any? %>
       <div id="tasks-list-<%= @label.slug %>" data-label-id="<%= @label.slug %>" data-target="sort.list" data-action="drop->sort#drop">
-        <%= render(TaskCardComponent.with_collection(@label.tasks)) %>
+        <%= render(TaskCardComponent.with_collection(@label.tasks.kept)) %>
       </div>
     <% else %>
       <div class="card empty-card">

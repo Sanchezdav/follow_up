@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :projects do
+    member do
+      get '/deprecated_tasks', to: 'projects#deprecated_tasks', as: :deprecated_tasks
+    end
     resources :labels, only: :show
     resources :tasks do
       resources :comments, except: [:new, :edit]

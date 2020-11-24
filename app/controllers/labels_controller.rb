@@ -1,9 +1,10 @@
 class LabelsController < ApplicationController
   before_action :authenticate_user!
+  before_action :project, only: :show
   before_action :set_label, only: :show
 
   def show
-    @labels = project.labels
+    @labels = @project.labels
   end
 
   private

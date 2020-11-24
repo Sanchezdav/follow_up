@@ -38,14 +38,13 @@
       <div class="d-flex">
         <div class="mr-4">
           <h5 class="fw-bold m-0"><%= @backlog.tasks.count %></h5>
-          <span class="text-muted">Backlog</span>
+          <%= link_to 'Backlog', project_label_path(@project, @backlog), class: 'text-muted' %>
         </div>
         <div>
-          <h5 class="fw-bold m-0"><%= @project.tasks.count %></h5>
-          <span class="text-muted">Total Project</span>
+          <h5 class="fw-bold m-0"><%= @project.tasks.discarded.count %></h5>
+          <%= link_to 'Deprecated', deprecated_tasks_project_path(@project), class: 'text-danger' %>
         </div>
       </div>
-      <%= link_to 'Go to Backlog', project_label_path(@project, @backlog), class: 'btn btn-outline-secondary' %>
     </div>
   </header>
   <main class="project-page__content px-3 py-4">

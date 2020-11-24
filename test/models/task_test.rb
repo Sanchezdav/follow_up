@@ -4,6 +4,7 @@
 #
 #  id             :bigint           not null, primary key
 #  comments_count :integer          default(0)
+#  discarded_at   :datetime
 #  position       :integer
 #  priority       :string
 #  slug           :string
@@ -17,10 +18,11 @@
 #
 # Indexes
 #
-#  index_tasks_on_assignee_id  (assignee_id)
-#  index_tasks_on_label_id     (label_id)
-#  index_tasks_on_reporter_id  (reporter_id)
-#  index_tasks_on_slug         (slug)
+#  index_tasks_on_assignee_id   (assignee_id)
+#  index_tasks_on_discarded_at  (discarded_at)
+#  index_tasks_on_label_id      (label_id)
+#  index_tasks_on_reporter_id   (reporter_id)
+#  index_tasks_on_slug          (slug)
 #
 # Foreign Keys
 #

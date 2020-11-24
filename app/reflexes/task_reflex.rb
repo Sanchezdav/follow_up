@@ -47,4 +47,14 @@ class TaskReflex < ApplicationReflex
     )
     cable_ready.broadcast
   end
+
+  def destroy
+    task = Task.friendly.find(params[:id])
+    task.discard
+  end
+
+  def restore
+    task = Task.friendly.find(params[:id])
+    task.undiscard
+  end
 end

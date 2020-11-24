@@ -7,6 +7,9 @@
           <%= @task.slug.upcase %>
         </span>
         <span class="badge rounded-pill <%= @task.label.color %>"><%= @task.label.name %></span>
+        <% if @task.discarded?  %>
+          <span class="badge rounded-pill bg-danger ml-3">Deprecated</span>
+        <% end %>
       </div>
       <%= link_to 'Back to board', project_path(@project) %>
     </div>
@@ -79,12 +82,25 @@
         </label>
         <%= number_field_tag 'story_points', @task.story_points, class: 'form-control', min: 1, data: { action: 'change->task#update_story_points' } %>
       </section>
-      <section class="task__priority p-2">
+      <section class="task__priority p-2 mb-3">
         <label class="d-flex align-items-center form-label font-weight-bold">
           Priority
           <i class="ml-2 <%= @task.priority_icon %>"></i>
         </label>
         <%= select_tag 'priority', options_for_select(Task.priorities.map { |key, value| [key.capitalize, value]}, @task.priority), { include_blank: 'Choose the priority level', class: 'form-select cursor-pointer', data: { action: 'change->task#update_priority' }} %>
+      </section>
+      <section class="task__deprecate p-2">
+        <% if @task.discarded? %>
+          <button type="button" class="btn btn-info" data-action="click->task#restore">
+            Restore
+            <i class="fas fa-undo-alt ml-2"></i>
+          </button>
+        <% else %>
+          <button type="button" class="btn btn-outline-danger" data-action="click->task#destroy">
+            <i class="fas fa-trash mr-2"></i>
+            Deprecate
+          </button>
+        <% end %>
       </section>
     </div>
   </div>

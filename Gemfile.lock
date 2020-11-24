@@ -97,6 +97,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    discard (1.2.0)
+      activerecord (>= 4.2, < 7)
     erubi (1.9.0)
     ffi (1.13.1)
     friendly_id (5.4.0)
@@ -276,6 +278,7 @@ DEPENDENCIES
   cable_ready (~> 4.3)
   capybara (>= 2.15)
   devise
+  discard (~> 1.2)
   friendly_id (~> 5.4.0)
   image_processing
   jbuilder (~> 2.7)
