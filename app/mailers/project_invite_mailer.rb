@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectInviteMailer < ApplicationMailer
   def new_user_invite
     @invite = params[:invite]

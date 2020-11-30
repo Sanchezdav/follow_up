@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Preview all emails at http://localhost:3000/rails/mailers/project_invite_mailer
 class ProjectInviteMailerPreview < ActionMailer::Preview
   def new_user_invite

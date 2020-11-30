@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: comments
@@ -23,13 +25,13 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :task, counter_cache: true
 
-  validate :has_content
+  validate :content?
 
   private
 
-  def has_content
-    unless content&.body&.present?
-      errors.add(:content, "can't be blank")
-    end
+  def content?
+    return if content&.body&.present?
+
+    errors.add(:content, "can't be blank")
   end
 end

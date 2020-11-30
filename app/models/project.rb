@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: projects
@@ -25,24 +27,24 @@ class Project < ApplicationRecord
 
   friendly_id :name, use: :slugged
 
-  MAIN_LABELS = ['Backlog', 'ToDo', 'In Progress', 'QA', 'Done']
+  MAIN_LABELS = ['Backlog', 'ToDo', 'In Progress', 'QA', 'Done'].freeze
 
   before_create :set_main_labels
 
   has_rich_text :description
   belongs_to :user
   has_many :tasks, through: :labels
-  has_many :project_members
+  has_many :project_members, dependent: :destroy
   has_many :members, through: :project_members, source: :user, class_name: 'User', dependent: :destroy
-  has_many :invites
+  has_many :invites, dependent: :destroy
 
-  validates :name, presence: true, length: {minimum: 2, maximum: 50}
+  validates :name, presence: true, length: { minimum: 2, maximum: 50 }
 
   private
 
   def set_main_labels
     MAIN_LABELS.each do |label|
-      self.labels.new(name: label)
+      labels.new(name: label)
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :authenticate_user!, raise: false
 
@@ -29,7 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    redirect_to unauthenticated_root_url, error: 'Something was wrong, try again!' 
+    redirect_to unauthenticated_root_url, error: 'Something was wrong, try again!'
   end
 
   private
@@ -41,7 +43,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def add_user_to_project
     return unless @token
 
-    project =  Invite.find_by_token(@token).project
+    project = Invite.find_by(token: @token).project
     resource.collaborations.push(project)
   end
 end

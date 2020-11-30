@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,7 +24,6 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-require 'open-uri'
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -33,13 +34,16 @@ class User < ApplicationRecord
 
   has_person_name
   has_one_attached :avatar
-  has_many :projects, -> { order(created_at: :desc) }, dependent: :destroy
-  has_many :project_members
+  has_many :projects, -> { order(created_at: :desc) }, inverse_of: :user, dependent: :destroy
+  has_many :project_members, dependent: :destroy
   has_many :collaborations, through: :project_members, source: :project, class_name: 'Project'
-  has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id'
-  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
-  has_many :reported_tasks, class_name: 'Task', foreign_key: 'reporter_id'
-  has_many :tasks, class_name: 'Task', foreign_key: 'assignee_id'
+  has_many :invitations, class_name: 'Invite', foreign_key: 'recipient_id',
+           inverse_of: :recipient, dependent: :destroy
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id',
+           inverse_of: :sender, dependent: :destroy
+  has_many :reported_tasks, class_name: 'Task', foreign_key: 'reporter_id',
+           inverse_of: :reporter, dependent: :destroy
+  has_many :tasks, class_name: 'Task', foreign_key: 'assignee_id', inverse_of: :assignee, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true
@@ -51,8 +55,8 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.username = auth.info.nickname
 
-      downloaded_image = open(auth.info.image)
-      user.avatar.attach(io: downloaded_image, filename: "avatar.jpg")
+      downloaded_image = File.open(auth.info.image)
+      user.avatar.attach(io: downloaded_image, filename: 'avatar.jpg')
 
       # If you are using confirmable uncomment next line.
       # user.skip_confirmation!

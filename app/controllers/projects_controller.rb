@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, except: [:index, :new, :create]
+  before_action :project, except: %i[index new create]
 
   # GET /projects
   # GET /projects.json
@@ -16,8 +18,8 @@ class ProjectsController < ApplicationController
 
     all_labels = @project.labels
     @members = @project.members.limit(5).order(created_at: :asc)
-    @labels = all_labels.includes(tasks: :label).without_backlog
-    @backlog = all_labels.find_by_name('Backlog')
+    @labels = all_labels.includes(:labelable, tasks: :label).without_backlog
+    @backlog = all_labels.find_by(name: 'Backlog')
   end
 
   # GET /projects/new
@@ -26,8 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /projects
   # POST /projects.json
@@ -76,15 +77,16 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project ||= Project.includes(
-        labels: [tasks: [assignee: :avatar_attachment]]
-      ).friendly.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def project_params
-      params.require(:project).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def project
+    @project ||= Project.includes(
+      labels: [tasks: [assignee: :avatar_attachment]]
+    ).friendly.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def project_params
+    params.require(:project).permit(:name, :description)
+  end
 end

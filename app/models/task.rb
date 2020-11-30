@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: tasks
@@ -38,10 +40,10 @@ class Task < ApplicationRecord
   belongs_to :label
   belongs_to :reporter, class_name: 'User'
   belongs_to :assignee, class_name: 'User', optional: true
-  has_many :comments, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :comments, -> { order(created_at: :desc) }, inverse_of: :task, dependent: :destroy
 
-  validates :title, presence: true, length: {minimum: 2, maximum: 50}
-  validate :has_description
+  validates :title, presence: true, length: { minimum: 2, maximum: 50 }
+  validate :description?
 
   enum priority: {
     trivial: 'trivial',
@@ -53,20 +55,20 @@ class Task < ApplicationRecord
   def priority_icon
     return '' unless priority
 
-    case priority
-    when 'trivial' then 'text-secondary fas fa-arrow-down'
-    when 'minor' then 'text-muted fas fa-angle-double-down'
-    when 'major' then 'text-info fas fa-angle-double-up'
-    when 'blocker' then 'text-danger fas fa-ban'
-    end
+    {
+      'trivial' => 'text-secondary fas fa-arrow-down',
+      'minor' => 'text-muted fas fa-angle-double-down',
+      'major' => 'text-info fas fa-angle-double-up',
+      'blocker' => 'text-danger fas fa-ban'
+    }[priority]
   end
 
   private
 
-  def has_description
-    unless description&.body&.present?
-      errors.add(:description, "can't be blank")
-    end
+  def description?
+    return if description&.body&.present?
+
+    errors.add(:description, "can't be blank")
   end
 
   def uuid

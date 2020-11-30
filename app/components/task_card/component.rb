@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TaskCard::Component < ViewComponent::Base
   with_collection_parameter :task
 

@@ -1,15 +1,15 @@
+# frozen_string_literal: true
+
 class InvitesController < ApplicationController
-  before_action :set_project, only: :create
+  before_action :project, only: :create
 
   def create
     emails = invite_params[:emails].split(', ')
     emails.each do |email|
       @invite = @project.invites.new(email: email)
       @invite.sender = current_user
-  
-      if @invite.save
-        send_invite_mail(@invite)
-      end
+
+      send_invite_mail(@invite) if @invite.save
     end
 
     redirect_to @project, notice: 'Invitations were sent successfully'
@@ -17,7 +17,7 @@ class InvitesController < ApplicationController
 
   private
 
-  def set_project
+  def project
     @project ||= current_user.projects.friendly.find(params[:project_id])
   end
 

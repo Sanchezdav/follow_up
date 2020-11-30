@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: invites
@@ -24,19 +26,19 @@ class Invite < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :recipient, class_name: 'User', optional: true
 
-  before_create :generate_token
   before_save :check_if_user_exists
+  before_create :generate_token
 
   validates :email, presence: true
 
   private
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest([self.project_id, Time.current].join)
+    self.token = Digest::SHA1.hexdigest([project_id, Time.current].join)
   end
 
   def check_if_user_exists
-    recipient = User.find_by_email(email)
+    recipient = User.find_by(email: email)
     return unless recipient
 
     self.recipient_id = recipient.id

@@ -1,7 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class TaskCardComponentTest < ViewComponent::TestCase
-  test "component renders something useful" do
+  test 'component renders something useful' do
     # assert_equal(
     #   %(<span>Hello, components!</span>),
     #   render_inline(TaskCardComponent.new(message: "Hello, components!")).css("span").to_html

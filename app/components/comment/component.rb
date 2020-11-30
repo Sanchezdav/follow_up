@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comment::Component < ViewComponent::Base
   with_collection_parameter :comment
 
@@ -14,7 +16,7 @@ class Comment::Component < ViewComponent::Base
     time_ago_in_words(@comment.created_at)
   end
 
-  def is_my_comment
+  def my_comment?
     user == @current_user
   end
 end

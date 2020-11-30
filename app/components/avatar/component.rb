@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Avatar::Component < ViewComponent::Base
   def initialize(user:, size:)
     @user = user

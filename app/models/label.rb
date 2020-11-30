@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: labels
@@ -22,20 +24,16 @@ class Label < ApplicationRecord
   acts_as_list scope: :labelable
 
   belongs_to :labelable, polymorphic: true, counter_cache: :tasks_count
-  has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
+  has_many :tasks, -> { order(position: :asc) }, inverse_of: :label, dependent: :destroy
 
   scope :without_backlog, -> { where.not('slug LIKE ?', '%backlog%') }
 
   def color
     case slug
-    when /todo/
-      'bg-info'
-    when  /in-progress/
-      'bg-primary'
-    when /qa/
-      'bg-warning'
-    when /done/
-      'bg-success'
+    when /todo/ then 'bg-info'
+    when /in-progress/ then 'bg-primary'
+    when /qa/ then 'bg-warning'
+    when /done/ then 'bg-success'
     else
       'bg-info'
     end

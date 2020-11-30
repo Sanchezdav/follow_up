@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def alert_class_for(flash_type)
     {
-      success: "alert-primary",
-      error: "alert-danger",
-      alert: "alert-warning",
-      notice: "alert-info"
+      success: 'alert-primary',
+      error: 'alert-danger',
+      alert: 'alert-warning',
+      notice: 'alert-info'
     }.stringify_keys[flash_type.to_s] || flash_type.to_s
   end
 
@@ -19,6 +21,6 @@ module ApplicationHelper
   end
 
   def formatted_date(date)
-    date.strftime("%B %d, %Y")
+    date.strftime('%B %d, %Y')
   end
 end
