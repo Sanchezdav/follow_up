@@ -1,7 +1,10 @@
 <section class="project-page">
   <header class="project-page__header mb-5">
     <div class="d-flex align-items-center justify-content-between mb-2">
-      <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
+      <div class="d-flex align-items-center">
+        <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
+        <h3 class="ml-3"><%= edit_button(@project.user) %></h3>
+      </div>
       <p class="d-flex flex-column align-items-end">
         <span class="text-muted">Created on</span>
         <span><%= formatted_date(@project.created_at) %></span>
