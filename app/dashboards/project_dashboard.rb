@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class ProjectDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,14 +15,14 @@ class ProjectDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     tasks: Field::HasMany,
     project_members: Field::HasMany,
-    members: Field::HasMany.with_options(class_name: "User"),
+    members: Field::HasMany.with_options(class_name: 'User'),
     invites: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     slug: Field::String,
-    tasks_count: Field::Number,
+    tasks_count: Field::Number
   }.freeze
 
   # COLLECTION_ATTRIBUTES

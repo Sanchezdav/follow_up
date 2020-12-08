@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class LabelsController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
@@ -11,11 +13,11 @@ module Admin
       search_term = params[:search].to_s.strip
       resources = Administrate::Search.new(scoped_resource, dashboard_class, search_term).run
       resources = order.apply(resources)
-      resources = resources.includes(:labelable, :tasks).paginate(:page => params[:page])     
+      resources = resources.includes(:labelable, :tasks).paginate(page: params[:page])
       page = Administrate::Page::Collection.new(dashboard, order: order)
 
       render locals: {
-        resources: resources.paginate(:page => params[:page]),
+        resources: resources.paginate(page: params[:page]),
         search_term: search_term,
         page: page,
         show_search_bar: show_search_bar?

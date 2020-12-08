@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class InviteDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -9,15 +11,15 @@ class InviteDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     project: Field::BelongsTo,
-    sender: Field::BelongsTo.with_options(class_name: "User"),
-    recipient: Field::BelongsTo.with_options(class_name: "User"),
+    sender: Field::BelongsTo.with_options(class_name: 'User'),
+    recipient: Field::BelongsTo.with_options(class_name: 'User'),
     id: Field::Number,
     email: Field::String,
     sender_id: Field::Number,
     recipient_id: Field::Number,
     token: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

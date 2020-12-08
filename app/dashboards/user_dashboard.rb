@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -10,10 +12,10 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     projects: Field::HasMany,
     project_members: Field::HasMany,
-    collaborations: Field::HasMany.with_options(class_name: "Project"),
-    invitations: Field::HasMany.with_options(class_name: "Invite"),
-    sent_invites: Field::HasMany.with_options(class_name: "Invite"),
-    reported_tasks: Field::HasMany.with_options(class_name: "Task"),
+    collaborations: Field::HasMany.with_options(class_name: 'Project'),
+    invitations: Field::HasMany.with_options(class_name: 'Invite'),
+    sent_invites: Field::HasMany.with_options(class_name: 'Invite'),
+    reported_tasks: Field::HasMany.with_options(class_name: 'Task'),
     tasks: Field::HasMany,
     comments: Field::HasMany,
     id: Field::Number,
@@ -29,7 +31,7 @@ class UserDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     provider: Field::String,
     uid: Field::String,
-    username: Field::String,
+    username: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES

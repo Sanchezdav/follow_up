@@ -1,4 +1,6 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+
+require 'administrate/base_dashboard'
 
 class TaskDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -10,8 +12,8 @@ class TaskDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     rich_text_description: Field::HasOne,
     label: Field::BelongsTo,
-    reporter: Field::BelongsTo.with_options(class_name: "User"),
-    assignee: Field::BelongsTo.with_options(class_name: "User"),
+    reporter: Field::BelongsTo.with_options(class_name: 'User'),
+    assignee: Field::BelongsTo.with_options(class_name: 'User'),
     comments: Field::HasMany,
     id: Field::Number,
     title: Field::String,
@@ -23,8 +25,11 @@ class TaskDashboard < Administrate::BaseDashboard
     assignee_id: Field::Number,
     comments_count: Field::Number,
     story_points: Field::Number,
-    priority: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }),
-    discarded_at: Field::DateTime,
+    priority: Field::Select.with_options(
+      searchable: false,
+      collection: ->(field) { field.resource.class.send(field.attribute.to_s.pluralize).keys }
+    ),
+    discarded_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES

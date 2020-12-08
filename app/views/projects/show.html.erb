@@ -3,7 +3,7 @@
     <div class="d-flex align-items-center justify-content-between mb-2">
       <div class="d-flex align-items-center">
         <h1 class="display-4 font-weight-bold"><%= @project.name %></h1>
-        <h3 class="ml-3"><%= edit_button(@project.user) %></h3>
+        <h3 class="ml-3"><%= edit_button(project: @project, user: @project.user) %></h3>
       </div>
       <p class="d-flex flex-column align-items-end">
         <span class="text-muted">Created on</span>
