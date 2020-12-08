@@ -25,4 +25,15 @@ Rails.application.routes.draw do
     end
     resources :invites, only: :create
   end
+
+  namespace :admin do
+    resources :users
+    resources :tasks
+    resources :projects
+    resources :labels
+    resources :invites
+    resources :project_members
+
+    root to: "users#index"
+  end
 end

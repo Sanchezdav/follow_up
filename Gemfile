@@ -29,6 +29,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 gem 'cable_ready', '~> 4.3'
 gem 'discard', '~> 1.2'
+gem 'administrate'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
