@@ -53,6 +53,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'simplecov', require: false
+  gem 'database_cleaner-active_record'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
