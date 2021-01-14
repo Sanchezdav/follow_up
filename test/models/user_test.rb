@@ -37,21 +37,21 @@ class UserTest < ActiveSupport::TestCase
 
   test 'user should not be valid without name' do
     @user.name = nil
-    refute @user.valid?
+    assert_not @user.valid?
   end
 
   test 'user should not be valid without email' do
     @user.email = nil
-    refute @user.valid?
+    assert_not @user.valid?
   end
 
   test 'user should not be valid with an invalid email format' do
     @user.email = 'batman-gmail.com'
-    refute @user.valid?
+    assert_not @user.valid?
   end
 
   test 'user should not be valid with a password lower than 6 characters' do
     @user.password = 'Test'
-    refute @user.valid?
+    assert_not @user.valid?
   end
 end
