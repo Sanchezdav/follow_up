@@ -37,6 +37,8 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-performance', require: false
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do

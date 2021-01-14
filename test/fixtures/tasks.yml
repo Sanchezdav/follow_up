@@ -32,13 +32,11 @@
 one:
   label: one
   title: MyString
-  description: MyText
   position: 1
   slug: MyString
 
 two:
   label: two
   title: MyString
-  description: MyText
   position: 1
   slug: MyString

@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-13T20:44:39-06:00">2021-01-13T20:44:39-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-01-13T21:09:04-06:00">2021-01-13T21:09:04-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  71.43%
+  72.22%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.71
+         0.72
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>35</b> relevant lines,
-    <span class="green"><b>25</b> lines covered</span> and
+    <b>36</b> relevant lines,
+    <span class="green"><b>26</b> lines covered</span> and
     <span class="red"><b>10</b> lines missed. </span>
     (<span class="red">
-  71.43%
+  72.22%
 </span>
 )
   </div>
@@ -171,12 +171,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#534701dbbe9c93d3dc36ddf0f0783cfb1b48be63" class="src_link" title="test/models/user_test.rb">test/models/user_test.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">41.18 %</td>
-            <td class="cell--number">67</td>
-            <td class="cell--number">17</td>
-            <td class="cell--number">7</td>
+            <td class="red strong cell--number t-file__coverage">44.44 %</td>
+            <td class="cell--number">57</td>
+            <td class="cell--number">18</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">10</td>
-            <td class="cell--number">0.41</td>
+            <td class="cell--number">0.44</td>
             
           </tr>
         
@@ -2835,7 +2835,7 @@
     <h3>test/models/user_test.rb</h3>
     <h4>
       <span class="red">
-  41.18%
+  44.44%
 </span>
 
       lines covered
@@ -2844,8 +2844,8 @@
     
 
     <div class="t-line-summary">
-      <b>17</b> relevant lines.
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>18</b> relevant lines.
+      <span class="green"><b>8</b> lines covered</span> and
       <span class="red"><b>10</b> lines missed.</span>
     </div>
 
@@ -3182,7 +3182,7 @@
 
             
 
-            <code class="ruby">  test &#39;user with an email, password and name should be valid&#39; do</code>
+            <code class="ruby">  setup do</code>
           </li>
         </div>
       
@@ -3193,7 +3193,7 @@
 
             
 
-            <code class="ruby">    user = User.new(email: &#39;batman@gmail.com&#39;,</code>
+            <code class="ruby">    @user = build(:user)</code>
           </li>
         </div>
       
@@ -3204,7 +3204,7 @@
 
             
 
-            <code class="ruby">                    password: &#39;Test123&#39;,</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3215,18 +3215,18 @@
 
             
 
-            <code class="ruby">                    password_confirmation: &#39;Test123&#39;,</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="34">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">                    name: &#39;Bruce Wayne&#39;)</code>
+            
+
+            <code class="ruby">  test &#39;user with an email, password and name should be valid&#39; do</code>
           </li>
         </div>
       
@@ -3237,7 +3237,7 @@
 
             
 
-            <code class="ruby">    assert user.valid?</code>
+            <code class="ruby">    assert @user.valid?</code>
           </li>
         </div>
       
@@ -3281,18 +3281,18 @@
 
             
 
-            <code class="ruby">    user = User.new(email: &#39;batman@gmail.com&#39;,</code>
+            <code class="ruby">    @user.name = nil</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="40">
+          <li class="missed" data-hits="0" data-linenumber="40">
             
             
 
             
 
-            <code class="ruby">                    password: &#39;Test123&#39;,</code>
+            <code class="ruby">    refute @user.valid?</code>
           </li>
         </div>
       
@@ -3303,34 +3303,12 @@
 
             
 
-            <code class="ruby">                    password_confirmation: &#39;Test123&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="42">
-            
-            
-
-            
-
-            <code class="ruby">    refute user.valid?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="43">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
+          <li class="never" data-hits="" data-linenumber="42">
             
             
 
@@ -3341,7 +3319,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="45">
+          <li class="covered" data-hits="1" data-linenumber="43">
             <span class="hits">1</span>
             
 
@@ -3352,13 +3330,35 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="46">
+          <li class="missed" data-hits="0" data-linenumber="44">
             
             
 
             
 
-            <code class="ruby">    user = User.new(name: &#39;Bruce Wayne&#39;,</code>
+            <code class="ruby">    @user.email = nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="45">
+            
+            
+
+            
+
+            <code class="ruby">    refute @user.valid?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -3369,18 +3369,18 @@
 
             
 
-            <code class="ruby">                    password: &#39;Test123&#39;,</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">                    password_confirmation: &#39;Test123&#39;)</code>
+            
+
+            <code class="ruby">  test &#39;user should not be valid with an invalid email format&#39; do</code>
           </li>
         </div>
       
@@ -3391,18 +3391,18 @@
 
             
 
-            <code class="ruby">    refute user.valid?</code>
+            <code class="ruby">    @user.email = &#39;batman-gmail.com&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
+          <li class="missed" data-hits="0" data-linenumber="50">
             
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    refute @user.valid?</code>
           </li>
         </div>
       
@@ -3413,89 +3413,12 @@
 
             
 
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  test &#39;user should not be valid with an invalid email&#39; do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="53">
-            
-            
-
-            
-
-            <code class="ruby">    user = User.new(email: &#39;batman-gmail.com&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="54">
-            
-            
-
-            
-
-            <code class="ruby">                    password: &#39;Test123&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby">                    password_confirmation: &#39;Test123&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-            
-
-            
-
-            <code class="ruby">                    name: &#39;Bruce Wayne&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
-            
-            
-
-            
-
-            <code class="ruby">    refute user.valid?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="58">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="52">
             
             
 
@@ -3506,7 +3429,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
+          <li class="covered" data-hits="1" data-linenumber="53">
             <span class="hits">1</span>
             
 
@@ -3517,62 +3440,29 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="61">
+          <li class="missed" data-hits="0" data-linenumber="54">
             
             
 
             
 
-            <code class="ruby">    user = User.new(email: &#39;batman-gmail.com&#39;,</code>
+            <code class="ruby">    @user.password = &#39;Test&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="missed" data-hits="0" data-linenumber="55">
             
             
 
             
 
-            <code class="ruby">                    password: &#39;Test&#39;,</code>
+            <code class="ruby">    refute @user.valid?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
-            
-
-            
-
-            <code class="ruby">                    password_confirmation: &#39;Test&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
-            
-
-            <code class="ruby">                    name: &#39;Bruce Wayne&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">    refute user.valid?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -3583,7 +3473,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="67">
+          <li class="never" data-hits="" data-linenumber="57">
             
             
 

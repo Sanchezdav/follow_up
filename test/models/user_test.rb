@@ -27,7 +27,31 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @user = build(:user)
+  end
+
+  test 'user with an email, password and name should be valid' do
+    assert @user.valid?
+  end
+
+  test 'user should not be valid without name' do
+    @user.name = nil
+    refute @user.valid?
+  end
+
+  test 'user should not be valid without email' do
+    @user.email = nil
+    refute @user.valid?
+  end
+
+  test 'user should not be valid with an invalid email format' do
+    @user.email = 'batman-gmail.com'
+    refute @user.valid?
+  end
+
+  test 'user should not be valid with a password lower than 6 characters' do
+    @user.password = 'Test'
+    refute @user.valid?
+  end
 end
