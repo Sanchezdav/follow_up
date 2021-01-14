@@ -8,8 +8,10 @@ Is an application for project management through tickets, you can invite people 
 - [Rails 6](https://guides.rubyonrails.org/)
 - [Stimulus](https://stimulusjs.org/)
 - [Stimulus Reflex](https://docs.stimulusreflex.com/)
+- [CableReady](https://cableready.stimulusreflex.com/)
 - [ViewComponents](https://viewcomponent.org/)
 - [PostgresQL](https://www.postgresql.org/)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 
 ## Dependencies
 
