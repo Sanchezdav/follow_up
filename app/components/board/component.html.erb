@@ -1,6 +1,6 @@
 <div id="<%= dom_id(@label) %>" class="col-md-3">
   <h3 class="mb-3">
-    <span class="badge rounded-pill <%= @label.color %>"><%= @label.name %></span>
+    <span class="badge rounded-pill <%= label_color(@label.slug) %>"><%= @label.name %></span>
   </h3>
   <div data-controller="sort">
     <% if @label.tasks.kept.any? %>

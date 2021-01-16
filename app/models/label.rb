@@ -27,15 +27,4 @@ class Label < ApplicationRecord
   has_many :tasks, -> { order(position: :asc) }, inverse_of: :label, dependent: :destroy
 
   scope :without_backlog, -> { where.not('slug LIKE ?', '%backlog%') }
-
-  def color
-    case slug
-    when /todo/ then 'bg-info'
-    when /in-progress/ then 'bg-primary'
-    when /qa/ then 'bg-warning'
-    when /done/ then 'bg-success'
-    else
-      'bg-info'
-    end
-  end
 end

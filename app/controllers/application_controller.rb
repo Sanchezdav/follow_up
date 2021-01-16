@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
   include ProjectHelper
+  include LabelHelper
+
   default_form_builder BootstrapFormBuilder
   before_action :configure_permitted_parameters, if: :devise_controller?
 

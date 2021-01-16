@@ -6,7 +6,7 @@
           <i class="fas fa-check-square mr-1"></i>
           <%= @task.slug.upcase %>
         </span>
-        <span class="badge rounded-pill <%= @task.label.color %>"><%= @task.label.name %></span>
+        <span class="badge rounded-pill <%= label_color(@task.label.slug) %>"><%= @task.label.name %></span>
         <% if @task.discarded?  %>
           <span class="badge rounded-pill bg-danger ml-3">Deprecated</span>
         <% end %>
