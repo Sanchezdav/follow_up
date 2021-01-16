@@ -52,17 +52,6 @@ class Task < ApplicationRecord
     blocker: 'blocker'
   }
 
-  def priority_icon
-    return '' unless priority
-
-    {
-      'trivial' => 'text-secondary fas fa-arrow-down',
-      'minor' => 'text-muted fas fa-angle-double-down',
-      'major' => 'text-info fas fa-angle-double-up',
-      'blocker' => 'text-danger fas fa-ban'
-    }[priority]
-  end
-
   private
 
   def description?
